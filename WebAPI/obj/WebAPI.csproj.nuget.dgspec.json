@@ -31,6 +31,69 @@
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\denis\\Desktop\\ПП 4.1\\WebAPI\\Entities\\Entities.csproj": {
+                "projectPath": "C:\\Users\\denis\\Desktop\\ПП 4.1\\WebAPI\\Entities\\Entities.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\denis\\Desktop\\ПП 4.1\\WebAPI\\Entities\\Entities.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\denis\\Desktop\\ПП 4.1\\WebAPI\\Entities\\Entities.csproj",
+        "projectName": "Entities",
+        "projectPath": "C:\\Users\\denis\\Desktop\\ПП 4.1\\WebAPI\\Entities\\Entities.csproj",
+        "packagesPath": "C:\\Users\\denis\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\denis\\Desktop\\ПП 4.1\\WebAPI\\Entities\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\denis\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
             "projectReferences": {}
           }
         },
@@ -43,6 +106,12 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.11, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -132,6 +201,72 @@
         }
       }
     },
+    "C:\\Users\\denis\\Desktop\\ПП 4.1\\WebAPI\\Repository\\Repository.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\denis\\Desktop\\ПП 4.1\\WebAPI\\Repository\\Repository.csproj",
+        "projectName": "Repository",
+        "projectPath": "C:\\Users\\denis\\Desktop\\ПП 4.1\\WebAPI\\Repository\\Repository.csproj",
+        "packagesPath": "C:\\Users\\denis\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\denis\\Desktop\\ПП 4.1\\WebAPI\\Repository\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\denis\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\denis\\Desktop\\ПП 4.1\\WebAPI\\Contracts\\Contracts.csproj": {
+                "projectPath": "C:\\Users\\denis\\Desktop\\ПП 4.1\\WebAPI\\Contracts\\Contracts.csproj"
+              },
+              "C:\\Users\\denis\\Desktop\\ПП 4.1\\WebAPI\\Entities\\Entities.csproj": {
+                "projectPath": "C:\\Users\\denis\\Desktop\\ПП 4.1\\WebAPI\\Entities\\Entities.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
     "C:\\Users\\denis\\Desktop\\ПП 4.1\\WebAPI\\WebAPI\\WebAPI.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -160,8 +295,14 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
+              "C:\\Users\\denis\\Desktop\\ПП 4.1\\WebAPI\\Entities\\Entities.csproj": {
+                "projectPath": "C:\\Users\\denis\\Desktop\\ПП 4.1\\WebAPI\\Entities\\Entities.csproj"
+              },
               "C:\\Users\\denis\\Desktop\\ПП 4.1\\WebAPI\\LoggerService\\LoggerService.csproj": {
                 "projectPath": "C:\\Users\\denis\\Desktop\\ПП 4.1\\WebAPI\\LoggerService\\LoggerService.csproj"
+              },
+              "C:\\Users\\denis\\Desktop\\ПП 4.1\\WebAPI\\Repository\\Repository.csproj": {
+                "projectPath": "C:\\Users\\denis\\Desktop\\ПП 4.1\\WebAPI\\Repository\\Repository.csproj"
               }
             }
           }
@@ -176,6 +317,16 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[7.0.11, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.11, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.5.0, )"

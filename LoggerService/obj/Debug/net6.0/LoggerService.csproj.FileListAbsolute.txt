@@ -13,3 +13,5 @@ C:\Users\denis\Desktop\ПП 4.1\WebAPI\LoggerService\obj\Debug\net6.0\LoggerServ
 C:\Users\denis\Desktop\ПП 4.1\WebAPI\LoggerService\obj\Debug\net6.0\refint\LoggerService.dll
 C:\Users\denis\Desktop\ПП 4.1\WebAPI\LoggerService\obj\Debug\net6.0\LoggerService.pdb
 C:\Users\denis\Desktop\ПП 4.1\WebAPI\LoggerService\obj\Debug\net6.0\ref\LoggerService.dll
+C:\Users\denis\Desktop\ПП 4.1\WebAPI\LoggerService\bin\Debug\net6.0\Entities.dll
+C:\Users\denis\Desktop\ПП 4.1\WebAPI\LoggerService\bin\Debug\net6.0\Entities.pdb
