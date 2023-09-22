@@ -64,6 +64,49 @@ namespace WebAPI.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Entities.Models.Department", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("DepartmentId");
+
+                    b.Property<Guid>("EmployeeId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Manager")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EmployeeId");
+
+                    b.ToTable("Departments");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("9ce18e7b-82b3-4be1-bd02-bdc34cdbf10e"),
+                            EmployeeId = new Guid("80abbca8-664d-4b20-b5de-024705497d4a"),
+                            Manager = "John Doe",
+                            Name = "IT Department"
+                        },
+                        new
+                        {
+                            Id = new Guid("2a30ca60-117b-4b2d-a52d-5d912d7d2676"),
+                            EmployeeId = new Guid("86dba8c0-d178-41e7-938c-ed49778fb52a"),
+                            Manager = "Jane Smith",
+                            Name = "HR Department"
+                        });
+                });
+
             modelBuilder.Entity("Entities.Models.Employee", b =>
                 {
                     b.Property<Guid>("Id")
@@ -120,6 +163,70 @@ namespace WebAPI.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Entities.Models.Project", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("ProjectId");
+
+                    b.Property<Guid>("CompanyId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<DateTime>("EndDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CompanyId");
+
+                    b.ToTable("Projects");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("0c9de349-d07a-4752-8e32-90fdfa01ad1c"),
+                            CompanyId = new Guid("c9d4c053-49b6-410c-bc78-2d54a9991870"),
+                            Description = "Description for Project A",
+                            EndDate = new DateTime(2023, 10, 22, 10, 26, 47, 825, DateTimeKind.Local).AddTicks(3987),
+                            Name = "Project A",
+                            StartDate = new DateTime(2023, 9, 22, 10, 26, 47, 825, DateTimeKind.Local).AddTicks(3973)
+                        },
+                        new
+                        {
+                            Id = new Guid("b5ba1486-f2d4-48b5-b78e-4cc807bcaffd"),
+                            CompanyId = new Guid("3d490a70-94ce-4d15-9494-5248280c2ce3"),
+                            Description = "Description for Project B",
+                            EndDate = new DateTime(2023, 11, 6, 10, 26, 47, 825, DateTimeKind.Local).AddTicks(3998),
+                            Name = "Project B",
+                            StartDate = new DateTime(2023, 9, 22, 10, 26, 47, 825, DateTimeKind.Local).AddTicks(3997)
+                        });
+                });
+
+            modelBuilder.Entity("Entities.Models.Department", b =>
+                {
+                    b.HasOne("Entities.Models.Employee", "Employee")
+                        .WithMany("Departments")
+                        .HasForeignKey("EmployeeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Employee");
+                });
+
             modelBuilder.Entity("Entities.Models.Employee", b =>
                 {
                     b.HasOne("Entities.Models.Company", "Company")
@@ -131,9 +238,27 @@ namespace WebAPI.Migrations
                     b.Navigation("Company");
                 });
 
+            modelBuilder.Entity("Entities.Models.Project", b =>
+                {
+                    b.HasOne("Entities.Models.Company", "Company")
+                        .WithMany("Projects")
+                        .HasForeignKey("CompanyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Company");
+                });
+
             modelBuilder.Entity("Entities.Models.Company", b =>
                 {
                     b.Navigation("Employees");
+
+                    b.Navigation("Projects");
+                });
+
+            modelBuilder.Entity("Entities.Models.Employee", b =>
+                {
+                    b.Navigation("Departments");
                 });
 #pragma warning restore 612, 618
         }

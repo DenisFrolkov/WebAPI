@@ -13,6 +13,8 @@ namespace Repository
         private RepositoryContext _repositoryContext;
         private ICompanyRepository _companyRepository;
         private IEmployeeRepository _employeeRepository;
+        private IProjectRepository _projectRepository;
+        private IDepartmentRepository _departmentRepository;
         public RepositoryManager(RepositoryContext repositoryContext)
         {
             _repositoryContext = repositoryContext;
@@ -33,6 +35,24 @@ namespace Repository
             if (_employeeRepository == null)
                     _employeeRepository = new EmployeeRepository(_repositoryContext);
                 return _employeeRepository;
+            }
+        }
+        public IProjectRepository Project
+        {
+            get
+            {
+                if (_projectRepository == null)
+                    _projectRepository = new ProjectRepository(_repositoryContext);
+                return _projectRepository;
+            }
+        }
+        public IDepartmentRepository Department
+        {
+            get
+            {
+                if (_departmentRepository == null)
+                    _departmentRepository = new DepartmentRepository(_repositoryContext);
+                return _departmentRepository;
             }
         }
         public void Save() => _repositoryContext.SaveChanges();

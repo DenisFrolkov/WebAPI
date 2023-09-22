@@ -22,5 +22,7 @@ namespace Entities.Models
         [ForeignKey(nameof(Company))]
         public Guid CompanyId { get; set; }
         public Company Company { get; set; }
+        
+        public ICollection<Department> Departments { get; set; }
     }
 }
