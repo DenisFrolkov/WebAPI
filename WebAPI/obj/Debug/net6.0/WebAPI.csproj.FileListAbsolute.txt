@@ -99,3 +99,4 @@ C:\Users\denis\Desktop\ПП 4.1\WebAPI\WebAPI\bin\Debug\net6.0\Repository.pdb
 C:\Users\denis\Desktop\ПП 4.1\WebAPI\WebAPI\obj\Debug\net6.0\WebAPI.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\denis\Desktop\ПП 4.1\WebAPI\WebAPI\bin\Debug\net6.0\AutoMapper.dll
 C:\Users\denis\Desktop\ПП 4.1\WebAPI\WebAPI\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\denis\Desktop\ПП 4.1\WebAPI\WebAPI\bin\Debug\net6.0\Newtonsoft.Json.dll

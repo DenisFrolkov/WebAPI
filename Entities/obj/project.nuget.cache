@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "3uAyjuHLsDWCptijM2FZlYFPKkY03wOTgKXnz+m/gz4/OiRvm62RyNsYYrZiollyJZlbJUOEDsY/keAIFPHRkQ==",
+  "dgSpecHash": "ERewSI6Q9uz9vlnHARgyK/6Wf1Tw24UW/7KaYa/phTbClUD1o4uzPTGSxLoelMmIlaNtHkXWGVTJJ5mQDREISg==",
   "success": true,
   "projectFilePath": "C:\\Users\\denis\\Desktop\\ПП 4.1\\WebAPI\\Entities\\Entities.csproj",
   "expectedPackageFiles": [
@@ -15,6 +15,7 @@
     "C:\\Users\\denis\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\7.0.0\\microsoft.extensions.logging.abstractions.7.0.0.nupkg.sha512",
     "C:\\Users\\denis\\.nuget\\packages\\microsoft.extensions.options\\7.0.0\\microsoft.extensions.options.7.0.0.nupkg.sha512",
     "C:\\Users\\denis\\.nuget\\packages\\microsoft.extensions.primitives\\7.0.0\\microsoft.extensions.primitives.7.0.0.nupkg.sha512",
+    "C:\\Users\\denis\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\denis\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
   ],
   "logs": []
