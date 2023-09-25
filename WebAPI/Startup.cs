@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.HttpOverrides;
 using NLog;
+using AutoMapper;
 using WebAPI.Extensions;
 
 namespace WebAPI;
@@ -24,6 +25,7 @@ public class Startup
         services.ConfigureSqlContext(Configuration);
         services.ConfigureRepositoryManager();
         services.AddControllers();
+        services.AddAutoMapper(typeof(Startup));
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
