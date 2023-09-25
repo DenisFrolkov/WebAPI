@@ -9,8 +9,6 @@ namespace Contracts
 {
     public interface ICompanyRepository
     {
-        void AnyMethodFromCompanyRepository();
-        void Create(Company company);
-        void Delete(Company company);
+        IEnumerable<Company> GetAllCompanies(bool trackChanges);
     }
 }

@@ -9,8 +9,6 @@ namespace Contracts
 {
     public interface IEmployeeRepository
     {
-        void AnyMethodFromEmployeeRepository();
-        void Update(Employee employee);
 
     }
 }

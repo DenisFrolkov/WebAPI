@@ -96,3 +96,4 @@ C:\Users\denis\Desktop\ПП 4.1\WebAPI\WebAPI\bin\Debug\net6.0\System.Text.Json.
 C:\Users\denis\Desktop\ПП 4.1\WebAPI\WebAPI\bin\Debug\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
 C:\Users\denis\Desktop\ПП 4.1\WebAPI\WebAPI\bin\Debug\net6.0\Repository.dll
 C:\Users\denis\Desktop\ПП 4.1\WebAPI\WebAPI\bin\Debug\net6.0\Repository.pdb
+C:\Users\denis\Desktop\ПП 4.1\WebAPI\WebAPI\obj\Debug\net6.0\WebAPI.MvcApplicationPartsAssemblyInfo.cs

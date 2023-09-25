@@ -16,13 +16,10 @@ namespace Repository
         {
         }
 
-        public void AnyMethodFromCompanyRepository()
-        {
-            throw new NotImplementedException();
-        }
-        public void Create1(Entities.Models.Company company) => Create(company);
-        public void Create2(Entities.Models.Company anotherCompany) => Create(anotherCompany);
-        public void Delete1(Entities.Models.Company olddCompany) => Create(olddCompany);
+        public IEnumerable<Company> GetAllCompanies(bool trackChanges) =>
+        FindAll(trackChanges)
+        .OrderBy(c => c.Name)
+        .ToList();
     }
 }
 

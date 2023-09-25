@@ -15,12 +15,5 @@ namespace Repository
         : base(repositoryContext)
         {
         }
-
-        public void AnyMethodFromEmployeeRepository()
-        {
-            throw new NotImplementedException();
-        }
-        public void Update1(Entities.Models.Employee employee) => Update(employee);
-        public void Update2(Entities.Models.Employee anotherEmployee) => Update(anotherEmployee);
     }
 }
