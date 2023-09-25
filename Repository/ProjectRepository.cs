@@ -16,9 +16,9 @@ namespace Repository
         {
         }
 
-        public void AnyMethodFromProjectRepository()
-        {
-            throw new NotImplementedException();
-        }
+        public IEnumerable<Project> GetAllProjects(bool trackChanges) =>
+        FindAll(trackChanges)
+        .OrderBy(c => c.Name)
+        .ToList();
     }
 }
