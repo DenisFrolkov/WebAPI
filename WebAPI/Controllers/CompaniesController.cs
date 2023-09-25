@@ -1,4 +1,5 @@
 ﻿using Contracts;
+using Entities.DataTransferObjects;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -24,9 +25,14 @@ namespace WebAPI.Controllers
             {
                 try
                 {
-                    var companies = _repository.Company.GetAllCompanies(trackChanges:
-                   false);
-                    return Ok(companies);
+                    var companies = _repository.Company.GetAllCompanies(trackChanges: false);
+                    var companiesDto = companies.Select(c => new CompanyDto
+                    {
+                        Id = c.Id,
+                        Name = c.Name,
+                        FullAddress = string.Join(' ', c.Address, c.Country)
+                    }).ToList();
+                    return Ok(companiesDto);
                 }
                 catch (Exception ex)
                 {
