@@ -12,13 +12,4 @@ namespace Entities.DataTransferObjects
         public string Name { get; set; }
         public string FullAddress { get; set; }
     }
-
-    public class ProjectDto
-    {
-        public Guid Id { get; set; }
-        public string Name { get; set; }
-        public string FullDescription { get; set; }
-        public Guid CompanyId { get; set; }
-
-    }
 }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ERewSI6Q9uz9vlnHARgyK/6Wf1Tw24UW/7KaYa/phTbClUD1o4uzPTGSxLoelMmIlaNtHkXWGVTJJ5mQDREISg==",
+  "dgSpecHash": "h9qBeKIwzIbF9YXMqYqt4aVaQoLmWNQjU+xnNKd7iJrZ/yOjETEI9+VhX5N/XJZojPBefq2OtIQzHMI+VIxFGA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\denis\\Desktop\\ПП 4.1\\WebAPI\\Entities\\Entities.csproj",
+  "projectFilePath": "C:\\Users\\denis\\Source\\Repos\\DenisFrolkov\\WebAPI\\Entities\\Entities.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\denis\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.11\\microsoft.entityframeworkcore.7.0.11.nupkg.sha512",
     "C:\\Users\\denis\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\7.0.11\\microsoft.entityframeworkcore.abstractions.7.0.11.nupkg.sha512",

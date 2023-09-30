@@ -13,6 +13,8 @@ namespace WebAPI.Mapping
 
             CreateMap<Project, ProjectDto>()
             .ForMember(c => c.FullDescription, opt => opt.MapFrom(x => string.Join(' ', x.Description)));
+
+            CreateMap<Employee, EmployeeDto>();
         }
     }
 }
