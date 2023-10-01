@@ -9,6 +9,7 @@ namespace Contracts
 {
     public interface IProjectRepository
     {
-        IEnumerable<Project> GetAllProjects(bool trackChanges);
+        IEnumerable<Project> GetProjects(Guid companyId, bool trackChanges);
+        Project GetProject(Guid companyId, Guid id, bool trackChanges);
     }
 }

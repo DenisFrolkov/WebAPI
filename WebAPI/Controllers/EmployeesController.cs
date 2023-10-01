@@ -21,8 +21,6 @@ namespace WebAPI.Controllers
             _logger = logger;
             _mapper = mapper;
         }
-
-        [HttpGet]
         [HttpGet]
         public IActionResult GetEmployeesForCompany(Guid companyId)
         {

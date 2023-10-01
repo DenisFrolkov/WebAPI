@@ -24,7 +24,13 @@ namespace WebAPI.Controllers
                 _logger = logger;
                 _mapper = mapper;
             }
-            [HttpGet]
+            public IActionResult GetCompanies()
+            {
+                var companies = _repository.Company.GetAllCompanies(trackChanges: false);
+                var companiesDto = _mapper.Map<IEnumerable<CompanyDto>>(companies);
+                return Ok(companiesDto);
+            }
+
             [HttpGet("{id}")]
             public IActionResult GetCompany(Guid id)
             {

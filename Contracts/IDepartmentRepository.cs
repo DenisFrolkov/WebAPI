@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entities.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,7 @@ namespace Contracts
 {
     public interface IDepartmentRepository
     {
-        void AnyMethodFromDepartmentRepository();
+        IEnumerable<Department> GetDepartments(Guid employeeId, bool trackChanges);
+        Department GetDepartment(Guid employeeId, Guid id, bool trackChanges);
     }
 }

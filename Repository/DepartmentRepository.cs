@@ -1,11 +1,6 @@
-﻿using Entities.Models;
+﻿using Contracts;
+using Entities.Models;
 using Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Contracts;
 
 namespace Repository
 {
@@ -16,9 +11,11 @@ namespace Repository
         {
         }
 
-        public void AnyMethodFromDepartmentRepository()
-        {
-            throw new NotImplementedException();
-        }
+        public IEnumerable<Department> GetDepartments(Guid employeeId, bool trackChanges) =>
+        FindByCondition(e => e.EmployeeId.Equals(employeeId), trackChanges)
+        .OrderBy(e => e.Name);
+
+        public Department GetDepartment(Guid employeesId, Guid id, bool trackChanges) =>
+        FindByCondition(e => e.EmployeeId.Equals(employeesId) && e.Id.Equals(id), trackChanges).SingleOrDefault();
     }
 }
