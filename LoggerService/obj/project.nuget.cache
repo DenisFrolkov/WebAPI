@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "wZo8o+ihu81dTJP6Oq+aruigxZ8tgZwMOTv7pPSnWp6Xz2elxc/nU6dYm1Gys9MJEMUPEEKjPc8U/dh93PPfyQ==",
+  "dgSpecHash": "AlRUyXIsnH8kNTZtbalgaQaY3ErDaIw1AYzds5zfWAmsmKyTvXz52W8Vt02C0tLzh4XKNyQ6OGMTR3qhRnj94g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\denis\\Desktop\\WebAPIDenis\\LoggerService\\LoggerService.csproj",
+  "projectFilePath": "C:\\Users\\denis\\Desktop\\WebAPI\\LoggerService\\LoggerService.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\denis\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.11\\microsoft.entityframeworkcore.7.0.11.nupkg.sha512",
     "C:\\Users\\denis\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\7.0.11\\microsoft.entityframeworkcore.abstractions.7.0.11.nupkg.sha512",
