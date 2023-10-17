@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Entities.DataTransferObjects;
 using Entities.Models;
+using Microsoft.VisualBasic;
 
 namespace WebAPI.Mapping
 {
@@ -9,16 +10,16 @@ namespace WebAPI.Mapping
         public MappingProfile()
         {
             CreateMap<Company, CompanyDto>()
-            .ForMember(c => c.FullAddress, opt => opt.MapFrom(x => string.Join(' ', x.Address, x.Country)));
+            .ForMember(c => c.FullAddress,
+            opt => opt.MapFrom(x => string.Join(' ', x.Address, x.Country)));   
+            CreateMap<CompanyForCreationDto, Company>();
 
-            CreateMap<Employee, EmployeeDto>()
-            .ForMember(c => c.FullPosition, opt => opt.MapFrom(x => string.Join(' ', x.Position)));
+            CreateMap<Employee, EmployeeDto>();
+            CreateMap<EmployeeForCreationDto, Employee>();
 
-            CreateMap<Project, ProjectDto>()
-            .ForMember(c => c.FullDescription, opt => opt.MapFrom(x => string.Join(' ', x.Description)));
+            CreateMap<Project, ProjectDto>();
 
-            CreateMap<Department, DepartmentDto>()
-            .ForMember(c => c.FullManager, opt => opt.MapFrom(x => string.Join(' ', x.Manager)));
+            CreateMap<Department, DepartmentDto>();
         }
     }
 }
