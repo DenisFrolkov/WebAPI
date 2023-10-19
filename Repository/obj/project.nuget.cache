@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "paCKP1bXQEuK7Ct7vQYw6wfIOR5OAygqGE3erRzwOx6T0h8HqKg2dajUZCzz6pKxZhaJeNyz+RDipMqHu7vYcQ==",
+  "dgSpecHash": "OqSR1ewP9ICW9sStRso8Vz72yx4yNZhbWo3ED1Pw0R3DqUqnEVZVQ8ekEz4IkhUKxftLKKjOxdS20ZMJvCl6xQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\denis\\Source\\Repos\\DenisFrolkov\\WebAPI\\Repository\\Repository.csproj",
+  "projectFilePath": "C:\\Users\\denis\\Desktop\\WebAPI\\Repository\\Repository.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\denis\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.11\\microsoft.entityframeworkcore.7.0.11.nupkg.sha512",
     "C:\\Users\\denis\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\7.0.11\\microsoft.entityframeworkcore.abstractions.7.0.11.nupkg.sha512",

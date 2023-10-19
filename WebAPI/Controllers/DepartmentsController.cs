@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Contracts;
 using Entities.DataTransferObjects;
+using Entities.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -35,7 +36,7 @@ namespace WebAPI.Controllers
             return Ok(departmentDto);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = "GetDepartmentForEmployee")]
         public IActionResult GetDepartmentForEmployee(Guid employeeId, Guid id)
         {
             var employee = _repository.Employee.GetEmployees(employeeId, trackChanges: false);
@@ -52,8 +53,33 @@ namespace WebAPI.Controllers
                 _logger.LogInfo($"Employee with id: {id} doesn't exist in the database.");
             return NotFound();
             }
-            var department = _mapper.Map<EmployeeDto>(departmentDb);
+            var department = _mapper.Map<DepartmentDto>(departmentDb);
             return Ok(department);
+        }
+
+        [HttpPost]
+        public IActionResult CreateDepartmentForEmployee(Guid employeeId, [FromBody] DepartmentForCreationDto department)
+        {
+            if (department == null)
+            {
+                _logger.LogError("DepartmentForCreationDto object sent from client is null.");
+                return BadRequest("DepartmentForCreationDto object is null");
+            }
+            var employee = _repository.Employee.GetEmployees(employeeId, trackChanges: false);
+            if (employee == null)
+            {
+                _logger.LogError($"Employee with id: {employeeId} doesn't exist in the database.");
+                return NotFound($"Employee with id: {employeeId} doesn't exist in the database.");
+            }
+            var departmentEntity = _mapper.Map<Department>(department);
+            _repository.Department.CreateDepartmentForEmployee(employeeId, departmentEntity);
+            _repository.Save();
+            var departmentToReturn = _mapper.Map<DepartmentDto>(departmentEntity);
+            return CreatedAtRoute("GetDepartmentForEmployee", new
+            {
+                employeeId,
+                id = departmentToReturn.Id
+            }, departmentToReturn);
         }
     }
 }

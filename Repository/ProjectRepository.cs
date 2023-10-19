@@ -22,5 +22,11 @@ namespace Repository
 
         public Project GetProject(Guid companyId, Guid id, bool trackChanges) =>
         FindByCondition(e => e.CompanyId.Equals(companyId) && e.Id.Equals(id), trackChanges).SingleOrDefault();
+
+        public void CreateProjectForCompany(Guid companyId, Project project)
+        {
+            project.CompanyId = companyId;
+            Create(project);
+        }
     }
 }

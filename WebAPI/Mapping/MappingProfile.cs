@@ -18,8 +18,11 @@ namespace WebAPI.Mapping
             CreateMap<EmployeeForCreationDto, Employee>();
 
             CreateMap<Project, ProjectDto>();
+            CreateMap<ProjectForCreationDto, Project>();
 
             CreateMap<Department, DepartmentDto>();
+            CreateMap<DepartmentForCreationDto, Department>();
+
         }
     }
 }

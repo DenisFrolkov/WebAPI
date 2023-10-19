@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Contracts;
 using Entities.DataTransferObjects;
+using Entities.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -33,7 +34,7 @@ namespace WebAPI.Controllers
             return Ok(projectsDto);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = "GetProjectForCompany")]
         public IActionResult GetProjectForCompany(Guid companyId, Guid id)
         {
             var company = _repository.Company.GetCompany(companyId, trackChanges: false);
@@ -51,6 +52,32 @@ namespace WebAPI.Controllers
             var project = _mapper.Map<ProjectDto>(projectDb);
             return Ok(project);
         }
+
+        [HttpPost]
+        public IActionResult CreateProjectForCompany(Guid companyId, [FromBody] ProjectForCreationDto project)
+        {
+            if (project == null)
+            {
+                _logger.LogError("ProjectForCreationDto object sent from client is null.");
+                return BadRequest("ProjectForCreationDto object is null");
+            }
+            var company = _repository.Company.GetCompany(companyId, trackChanges: false);
+            if (company == null)
+            {
+                _logger.LogError($"Company with id: {companyId} doesn't exist in the database."); // Исправлен вызов LogInfo на LogError
+                return NotFound($"Company with id: {companyId} doesn't exist in the database.");
+            }
+            var projectEntity = _mapper.Map<Project>(project);
+            _repository.Project.CreateProjectForCompany(companyId, projectEntity);
+            _repository.Save();
+            var projectToReturn = _mapper.Map<ProjectDto>(projectEntity);
+            return CreatedAtRoute("GetProjectForCompany", new // Исправлено имя маршрута на "GetProjectForCompany"
+            {
+                companyId,
+                id = projectToReturn.Id
+            }, projectToReturn);
+        }
+
     }
 }
 
