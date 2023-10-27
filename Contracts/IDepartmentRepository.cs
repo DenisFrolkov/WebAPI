@@ -12,5 +12,6 @@ namespace Contracts
         IEnumerable<Department> GetDepartments(Guid employeeId, bool trackChanges);
         Department GetDepartment(Guid employeeId, Guid id, bool trackChanges);
         void CreateDepartmentForEmployee(Guid employeeId, Department department);
+        void DeleteDepartment(Department department);
     }
 }

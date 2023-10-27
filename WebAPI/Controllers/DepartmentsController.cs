@@ -3,6 +3,7 @@ using Contracts;
 using Entities.DataTransferObjects;
 using Entities.Models;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers
@@ -80,6 +81,81 @@ namespace WebAPI.Controllers
                 employeeId,
                 id = departmentToReturn.Id
             }, departmentToReturn);
+        }
+        [HttpDelete("{id}")]
+        public IActionResult DeleteDepartmentForEmployee(Guid employeeId, Guid id)
+        {
+            var employee = _repository.Employee.GetEmployees(employeeId, trackChanges: false);
+            if (employee == null)
+            {
+                _logger.LogInfo($"Employee with id: {employeeId} doesn't exist in the database.");
+                return NotFound();
+            }
+            var departmentForEmployee = _repository.Department.GetDepartment(employeeId, id, trackChanges: false);
+            if (departmentForEmployee == null)
+            {
+                _logger.LogInfo($"Department with id: {id} doesn't exist in the database.");
+                return NotFound();
+            }
+            _repository.Department.DeleteDepartment(departmentForEmployee);
+            _repository.Save();
+            return NoContent();
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult UpdateDepartmentForEmployee(Guid employeeId, Guid id, [FromBody] DepartmentForUpdateDto department)
+        {
+            if (department == null)
+            {
+                _logger.LogError("DepartmentForUpdateDto object sent from client is null.");
+                return BadRequest("DepartmentForUpdateDto object is null");
+            }
+            var employee = _repository.Employee.GetEmployees(employeeId, trackChanges: false);
+            if (employee == null)
+            {
+                _logger.LogInfo($"Employee with id: {employeeId} doesn't exist in the database.");
+                return NotFound();
+            }
+            var departmentEntity = _repository.Department.GetDepartment(employeeId, id,
+           trackChanges:
+            true);
+            if (departmentEntity == null)
+            {
+                _logger.LogInfo($"Department with id: {id} doesn't exist in the database.");
+                return NotFound();
+            }
+            _mapper.Map(department, departmentEntity);
+            _repository.Save();
+            return NoContent();
+        }
+
+        [HttpPatch("{id}")]
+        public IActionResult PartiallyUpdateDepartmentForEmployee(Guid employeeId, Guid id, [FromBody] JsonPatchDocument<DepartmentForUpdateDto> patchDoc)
+        {
+            if (patchDoc == null)
+            {
+                _logger.LogError("patchDoc object sent from client is null.");
+                return BadRequest("patchDoc object is null");
+            }
+            var employee = _repository.Employee.GetEmployees(employeeId, trackChanges: false);
+            if (employee == null)
+            {
+                _logger.LogInfo($"Employee with id: {employeeId} doesn't exist in the database.");
+                return NotFound();
+            }
+            var departmentEntity = _repository.Department.GetDepartment(employeeId, id,
+           trackChanges:
+            true);
+            if (departmentEntity == null)
+            {
+                _logger.LogInfo($"Project with id: {id} doesn't exist in the database.");
+                return NotFound();
+            }
+            var departmentToPatch = _mapper.Map<DepartmentForUpdateDto>(departmentEntity);
+            patchDoc.ApplyTo(departmentToPatch);
+            _mapper.Map(departmentToPatch, departmentEntity);
+            _repository.Save();
+            return NoContent();
         }
     }
 }

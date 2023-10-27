@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "YCvBywFRDvq1lCgtC5KLAzZDS0cRTbZr7+bUUSiId5RYVwDob394CZAry/zxT1B+pOOUQR6GvHsomoQtdLbX0A==",
+  "dgSpecHash": "R3qShvanEfufDUfTiHS87gOVKnE9gQdcy4Y8rVkWLdHDQ/mLeki0R8eYXs6x/1c8yFXyF5nGOTq9s/BdeoznDg==",
   "success": true,
   "projectFilePath": "C:\\Users\\denis\\Desktop\\WebAPI\\WebAPI\\WebAPI.csproj",
   "expectedPackageFiles": [
@@ -9,6 +9,8 @@
     "C:\\Users\\denis\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\denis\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
     "C:\\Users\\denis\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
+    "C:\\Users\\denis\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\7.0.13\\microsoft.aspnetcore.jsonpatch.7.0.13.nupkg.sha512",
+    "C:\\Users\\denis\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\6.0.24\\microsoft.aspnetcore.mvc.newtonsoftjson.6.0.24.nupkg.sha512",
     "C:\\Users\\denis\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\denis\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\denis\\.nuget\\packages\\microsoft.data.sqlclient\\5.1.1\\microsoft.data.sqlclient.5.1.1.nupkg.sha512",
@@ -46,6 +48,7 @@
     "C:\\Users\\denis\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
     "C:\\Users\\denis\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",
     "C:\\Users\\denis\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
+    "C:\\Users\\denis\\.nuget\\packages\\newtonsoft.json.bson\\1.0.2\\newtonsoft.json.bson.1.0.2.nupkg.sha512",
     "C:\\Users\\denis\\.nuget\\packages\\nlog\\5.2.4\\nlog.5.2.4.nupkg.sha512",
     "C:\\Users\\denis\\.nuget\\packages\\nlog.extensions.logging\\5.3.4\\nlog.extensions.logging.5.3.4.nupkg.sha512",
     "C:\\Users\\denis\\.nuget\\packages\\swashbuckle.aspnetcore\\6.5.0\\swashbuckle.aspnetcore.6.5.0.nupkg.sha512",

@@ -22,5 +22,9 @@ namespace Repository
             department.EmployeeId = employeeId;
             Create(department);
         }
+        public void DeleteDepartment(Department department)
+        {
+            Delete(department);
+        }
     }
 }

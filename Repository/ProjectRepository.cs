@@ -28,5 +28,9 @@ namespace Repository
             project.CompanyId = companyId;
             Create(project);
         }
+        public void DeleteProject(Project project)
+        {
+            Delete(project);
+        }
     }
 }
