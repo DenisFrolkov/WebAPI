@@ -764,11 +764,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\denis\\Desktop\\WebAPI\\LoggerService\\LoggerService.csproj",
+      "projectUniqueName": "C:\\Users\\denis\\Source\\Repos\\DenisFrolkov\\WebAPI\\LoggerService\\LoggerService.csproj",
       "projectName": "LoggerService",
-      "projectPath": "C:\\Users\\denis\\Desktop\\WebAPI\\LoggerService\\LoggerService.csproj",
+      "projectPath": "C:\\Users\\denis\\Source\\Repos\\DenisFrolkov\\WebAPI\\LoggerService\\LoggerService.csproj",
       "packagesPath": "C:\\Users\\denis\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\denis\\Desktop\\WebAPI\\LoggerService\\obj\\",
+      "outputPath": "C:\\Users\\denis\\Source\\Repos\\DenisFrolkov\\WebAPI\\LoggerService\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -789,8 +789,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\denis\\Desktop\\WebAPI\\Contracts\\Contracts.csproj": {
-              "projectPath": "C:\\Users\\denis\\Desktop\\WebAPI\\Contracts\\Contracts.csproj"
+            "C:\\Users\\denis\\Source\\Repos\\DenisFrolkov\\WebAPI\\Contracts\\Contracts.csproj": {
+              "projectPath": "C:\\Users\\denis\\Source\\Repos\\DenisFrolkov\\WebAPI\\Contracts\\Contracts.csproj"
             }
           }
         }

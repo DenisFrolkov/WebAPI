@@ -66,6 +66,11 @@ namespace WebAPI.Controllers
                 _logger.LogError("DepartmentForCreationDto object sent from client is null.");
                 return BadRequest("DepartmentForCreationDto object is null");
             }
+            if (!ModelState.IsValid)
+            {
+                _logger.LogError("Invalid model state for the CreateDepartmentForEmployee object");
+                return UnprocessableEntity(ModelState);
+            }
             var employee = _repository.Employee.GetEmployees(employeeId, trackChanges: false);
             if (employee == null)
             {

@@ -62,6 +62,11 @@ namespace WebAPI.Controllers
                 _logger.LogError("ProjectForCreationDto object sent from client is null.");
                 return BadRequest("ProjectForCreationDto object is null");
             }
+            if (!ModelState.IsValid)
+            {
+                _logger.LogError("Invalid model state for the CreateProjectForCompany object");
+                return UnprocessableEntity(ModelState);
+            }
             var company = _repository.Company.GetCompany(companyId, trackChanges: false);
             if (company == null)
             {

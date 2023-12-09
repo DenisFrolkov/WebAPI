@@ -409,3 +409,6 @@ C:\Users\denis\Desktop\WebAPI\WebAPI\obj\Debug\net6.0\ref\WebAPI.dll
 C:\Users\denis\Desktop\WebAPI\WebAPI\bin\Debug\net6.0\Microsoft.AspNetCore.JsonPatch.dll
 C:\Users\denis\Desktop\WebAPI\WebAPI\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 C:\Users\denis\Desktop\WebAPI\WebAPI\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
+C:\Users\denis\Source\Repos\DenisFrolkov\WebAPI\WebAPI\bin\Debug\net6.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\denis\Source\Repos\DenisFrolkov\WebAPI\WebAPI\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\denis\Source\Repos\DenisFrolkov\WebAPI\WebAPI\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll

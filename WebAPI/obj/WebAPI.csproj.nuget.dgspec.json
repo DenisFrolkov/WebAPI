@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\denis\\Desktop\\WebAPI\\WebAPI\\WebAPI.csproj": {}
+    "C:\\Users\\denis\\Source\\Repos\\DenisFrolkov\\WebAPI\\WebAPI\\WebAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\denis\\Desktop\\WebAPI\\Contracts\\Contracts.csproj": {
+    "C:\\Users\\denis\\Source\\Repos\\DenisFrolkov\\WebAPI\\Contracts\\Contracts.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\denis\\Desktop\\WebAPI\\Contracts\\Contracts.csproj",
+        "projectUniqueName": "C:\\Users\\denis\\Source\\Repos\\DenisFrolkov\\WebAPI\\Contracts\\Contracts.csproj",
         "projectName": "Contracts",
-        "projectPath": "C:\\Users\\denis\\Desktop\\WebAPI\\Contracts\\Contracts.csproj",
+        "projectPath": "C:\\Users\\denis\\Source\\Repos\\DenisFrolkov\\WebAPI\\Contracts\\Contracts.csproj",
         "packagesPath": "C:\\Users\\denis\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\denis\\Desktop\\WebAPI\\Contracts\\obj\\",
+        "outputPath": "C:\\Users\\denis\\Source\\Repos\\DenisFrolkov\\WebAPI\\Contracts\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -32,8 +32,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\denis\\Desktop\\WebAPI\\Entities\\Entities.csproj": {
-                "projectPath": "C:\\Users\\denis\\Desktop\\WebAPI\\Entities\\Entities.csproj"
+              "C:\\Users\\denis\\Source\\Repos\\DenisFrolkov\\WebAPI\\Entities\\Entities.csproj": {
+                "projectPath": "C:\\Users\\denis\\Source\\Repos\\DenisFrolkov\\WebAPI\\Entities\\Entities.csproj"
               }
             }
           }
@@ -67,14 +67,14 @@
         }
       }
     },
-    "C:\\Users\\denis\\Desktop\\WebAPI\\Entities\\Entities.csproj": {
+    "C:\\Users\\denis\\Source\\Repos\\DenisFrolkov\\WebAPI\\Entities\\Entities.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\denis\\Desktop\\WebAPI\\Entities\\Entities.csproj",
+        "projectUniqueName": "C:\\Users\\denis\\Source\\Repos\\DenisFrolkov\\WebAPI\\Entities\\Entities.csproj",
         "projectName": "Entities",
-        "projectPath": "C:\\Users\\denis\\Desktop\\WebAPI\\Entities\\Entities.csproj",
+        "projectPath": "C:\\Users\\denis\\Source\\Repos\\DenisFrolkov\\WebAPI\\Entities\\Entities.csproj",
         "packagesPath": "C:\\Users\\denis\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\denis\\Desktop\\WebAPI\\Entities\\obj\\",
+        "outputPath": "C:\\Users\\denis\\Source\\Repos\\DenisFrolkov\\WebAPI\\Entities\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -136,14 +136,14 @@
         }
       }
     },
-    "C:\\Users\\denis\\Desktop\\WebAPI\\LoggerService\\LoggerService.csproj": {
+    "C:\\Users\\denis\\Source\\Repos\\DenisFrolkov\\WebAPI\\LoggerService\\LoggerService.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\denis\\Desktop\\WebAPI\\LoggerService\\LoggerService.csproj",
+        "projectUniqueName": "C:\\Users\\denis\\Source\\Repos\\DenisFrolkov\\WebAPI\\LoggerService\\LoggerService.csproj",
         "projectName": "LoggerService",
-        "projectPath": "C:\\Users\\denis\\Desktop\\WebAPI\\LoggerService\\LoggerService.csproj",
+        "projectPath": "C:\\Users\\denis\\Source\\Repos\\DenisFrolkov\\WebAPI\\LoggerService\\LoggerService.csproj",
         "packagesPath": "C:\\Users\\denis\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\denis\\Desktop\\WebAPI\\LoggerService\\obj\\",
+        "outputPath": "C:\\Users\\denis\\Source\\Repos\\DenisFrolkov\\WebAPI\\LoggerService\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -164,8 +164,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\denis\\Desktop\\WebAPI\\Contracts\\Contracts.csproj": {
-                "projectPath": "C:\\Users\\denis\\Desktop\\WebAPI\\Contracts\\Contracts.csproj"
+              "C:\\Users\\denis\\Source\\Repos\\DenisFrolkov\\WebAPI\\Contracts\\Contracts.csproj": {
+                "projectPath": "C:\\Users\\denis\\Source\\Repos\\DenisFrolkov\\WebAPI\\Contracts\\Contracts.csproj"
               }
             }
           }
@@ -205,14 +205,14 @@
         }
       }
     },
-    "C:\\Users\\denis\\Desktop\\WebAPI\\Repository\\Repository.csproj": {
+    "C:\\Users\\denis\\Source\\Repos\\DenisFrolkov\\WebAPI\\Repository\\Repository.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\denis\\Desktop\\WebAPI\\Repository\\Repository.csproj",
+        "projectUniqueName": "C:\\Users\\denis\\Source\\Repos\\DenisFrolkov\\WebAPI\\Repository\\Repository.csproj",
         "projectName": "Repository",
-        "projectPath": "C:\\Users\\denis\\Desktop\\WebAPI\\Repository\\Repository.csproj",
+        "projectPath": "C:\\Users\\denis\\Source\\Repos\\DenisFrolkov\\WebAPI\\Repository\\Repository.csproj",
         "packagesPath": "C:\\Users\\denis\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\denis\\Desktop\\WebAPI\\Repository\\obj\\",
+        "outputPath": "C:\\Users\\denis\\Source\\Repos\\DenisFrolkov\\WebAPI\\Repository\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -233,11 +233,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\denis\\Desktop\\WebAPI\\Contracts\\Contracts.csproj": {
-                "projectPath": "C:\\Users\\denis\\Desktop\\WebAPI\\Contracts\\Contracts.csproj"
+              "C:\\Users\\denis\\Source\\Repos\\DenisFrolkov\\WebAPI\\Contracts\\Contracts.csproj": {
+                "projectPath": "C:\\Users\\denis\\Source\\Repos\\DenisFrolkov\\WebAPI\\Contracts\\Contracts.csproj"
               },
-              "C:\\Users\\denis\\Desktop\\WebAPI\\Entities\\Entities.csproj": {
-                "projectPath": "C:\\Users\\denis\\Desktop\\WebAPI\\Entities\\Entities.csproj"
+              "C:\\Users\\denis\\Source\\Repos\\DenisFrolkov\\WebAPI\\Entities\\Entities.csproj": {
+                "projectPath": "C:\\Users\\denis\\Source\\Repos\\DenisFrolkov\\WebAPI\\Entities\\Entities.csproj"
               }
             }
           }
@@ -271,14 +271,14 @@
         }
       }
     },
-    "C:\\Users\\denis\\Desktop\\WebAPI\\WebAPI\\WebAPI.csproj": {
+    "C:\\Users\\denis\\Source\\Repos\\DenisFrolkov\\WebAPI\\WebAPI\\WebAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\denis\\Desktop\\WebAPI\\WebAPI\\WebAPI.csproj",
+        "projectUniqueName": "C:\\Users\\denis\\Source\\Repos\\DenisFrolkov\\WebAPI\\WebAPI\\WebAPI.csproj",
         "projectName": "WebAPI",
-        "projectPath": "C:\\Users\\denis\\Desktop\\WebAPI\\WebAPI\\WebAPI.csproj",
+        "projectPath": "C:\\Users\\denis\\Source\\Repos\\DenisFrolkov\\WebAPI\\WebAPI\\WebAPI.csproj",
         "packagesPath": "C:\\Users\\denis\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\denis\\Desktop\\WebAPI\\WebAPI\\obj\\",
+        "outputPath": "C:\\Users\\denis\\Source\\Repos\\DenisFrolkov\\WebAPI\\WebAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -299,14 +299,14 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\denis\\Desktop\\WebAPI\\Entities\\Entities.csproj": {
-                "projectPath": "C:\\Users\\denis\\Desktop\\WebAPI\\Entities\\Entities.csproj"
+              "C:\\Users\\denis\\Source\\Repos\\DenisFrolkov\\WebAPI\\Entities\\Entities.csproj": {
+                "projectPath": "C:\\Users\\denis\\Source\\Repos\\DenisFrolkov\\WebAPI\\Entities\\Entities.csproj"
               },
-              "C:\\Users\\denis\\Desktop\\WebAPI\\LoggerService\\LoggerService.csproj": {
-                "projectPath": "C:\\Users\\denis\\Desktop\\WebAPI\\LoggerService\\LoggerService.csproj"
+              "C:\\Users\\denis\\Source\\Repos\\DenisFrolkov\\WebAPI\\LoggerService\\LoggerService.csproj": {
+                "projectPath": "C:\\Users\\denis\\Source\\Repos\\DenisFrolkov\\WebAPI\\LoggerService\\LoggerService.csproj"
               },
-              "C:\\Users\\denis\\Desktop\\WebAPI\\Repository\\Repository.csproj": {
-                "projectPath": "C:\\Users\\denis\\Desktop\\WebAPI\\Repository\\Repository.csproj"
+              "C:\\Users\\denis\\Source\\Repos\\DenisFrolkov\\WebAPI\\Repository\\Repository.csproj": {
+                "projectPath": "C:\\Users\\denis\\Source\\Repos\\DenisFrolkov\\WebAPI\\Repository\\Repository.csproj"
               }
             }
           }
