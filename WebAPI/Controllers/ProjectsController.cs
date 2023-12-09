@@ -22,7 +22,7 @@ namespace WebAPI.Controllers
             _mapper = mapper;
         }
         [HttpGet]
-        public IActionResult GetProjectsForCompany(Guid companyId)
+        public async Task<IActionResult> GetProjectsForCompany(Guid companyId)
         {
             var company = _repository.Company.GetCompany(companyId, trackChanges: false);
             if (company == null)
@@ -36,7 +36,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("{id}", Name = "GetProjectForCompany")]
-        public IActionResult GetProjectForCompany(Guid companyId, Guid id)
+        public async Task<IActionResult> GetProjectForCompany(Guid companyId, Guid id)
         {
             var company = _repository.Company.GetCompany(companyId, trackChanges: false);
             if (company == null)
@@ -55,7 +55,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateProjectForCompany(Guid companyId, [FromBody] ProjectForCreationDto project)
+        public async Task<IActionResult> CreateProjectForCompany(Guid companyId, [FromBody] ProjectForCreationDto project)
         {
             if (project == null)
             {
@@ -85,7 +85,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpDelete("{id}")]
-        public IActionResult DeleteProjectForCompany(Guid companyId, Guid id)
+        public async Task<IActionResult> DeleteProjectForCompany(Guid companyId, Guid id)
         {
             var company = _repository.Company.GetCompany(companyId, trackChanges: false);
             if (company == null)
@@ -106,7 +106,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult UpdateProjectForCompany(Guid companyId, Guid id, [FromBody] ProjectForUpdateDto project)
+        public async Task<IActionResult> UpdateProjectForCompany(Guid companyId, Guid id, [FromBody] ProjectForUpdateDto project)
         {
             if (project == null)
             {
@@ -137,7 +137,7 @@ namespace WebAPI.Controllers
             return NoContent();
         }
         [HttpPatch("{id}")]
-        public IActionResult PartiallyUpdateProjectForCompany(Guid companyId, Guid id, [FromBody] JsonPatchDocument<ProjectForUpdateDto> patchDoc)
+        public async Task<IActionResult> PartiallyUpdateProjectForCompany(Guid companyId, Guid id, [FromBody] JsonPatchDocument<ProjectForUpdateDto> patchDoc)
         {
             if (patchDoc == null)
             {

@@ -15,16 +15,14 @@ namespace WebAPI.Controllers
         private readonly IRepositoryManager _repository;
         private readonly ILoggerManager _logger;
         private readonly IMapper _mapper;
-        public DepartmentController(IRepositoryManager repository, ILoggerManager
-       logger,
-        IMapper mapper)
+        public DepartmentController(IRepositoryManager repository, ILoggerManager logger, IMapper mapper)
         {
             _repository = repository;
             _logger = logger;
             _mapper = mapper;
          }
         [HttpGet]
-        public IActionResult GetDepartmentForEmployee(Guid employeeId)
+        public async Task<IActionResult> GetDepartmentForEmployee(Guid employeeId)
         {
             var employee = _repository.Employee.GetEmployees(employeeId, trackChanges: false);
             if (employee == null)
@@ -38,7 +36,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("{id}", Name = "GetDepartmentForEmployee")]
-        public IActionResult GetDepartmentForEmployee(Guid employeeId, Guid id)
+        public async Task<IActionResult> GetDepartmentForEmployee(Guid employeeId, Guid id)
         {
             var employee = _repository.Employee.GetEmployees(employeeId, trackChanges: false);
             if (employee == null)
@@ -59,7 +57,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateDepartmentForEmployee(Guid employeeId, [FromBody] DepartmentForCreationDto department)
+        public async Task<IActionResult> CreateDepartmentForEmployee(Guid employeeId, [FromBody] DepartmentForCreationDto department)
         {
             if (department == null)
             {
@@ -88,7 +86,7 @@ namespace WebAPI.Controllers
             }, departmentToReturn);
         }
         [HttpDelete("{id}")]
-        public IActionResult DeleteDepartmentForEmployee(Guid employeeId, Guid id)
+        public async Task<IActionResult> DeleteDepartmentForEmployee(Guid employeeId, Guid id)
         {
             var employee = _repository.Employee.GetEmployees(employeeId, trackChanges: false);
             if (employee == null)
@@ -108,7 +106,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult UpdateDepartmentForEmployee(Guid employeeId, Guid id, [FromBody] DepartmentForUpdateDto department)
+        public async Task<IActionResult> UpdateDepartmentForEmployee(Guid employeeId, Guid id, [FromBody] DepartmentForUpdateDto department)
         {
             if (department == null)
             {
@@ -140,7 +138,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpPatch("{id}")]
-        public IActionResult PartiallyUpdateDepartmentForEmployee(Guid employeeId, Guid id, [FromBody] JsonPatchDocument<DepartmentForUpdateDto> patchDoc)
+        public async Task<IActionResult> PartiallyUpdateDepartmentForEmployee(Guid employeeId, Guid id, [FromBody] JsonPatchDocument<DepartmentForUpdateDto> patchDoc)
         {
             if (patchDoc == null)
             {

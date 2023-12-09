@@ -15,16 +15,14 @@ namespace WebAPI.Controllers
         private readonly IRepositoryManager _repository;
         private readonly ILoggerManager _logger;
         private readonly IMapper _mapper;
-        public EmployeesController(IRepositoryManager repository, ILoggerManager
-       logger,
-        IMapper mapper)
+        public EmployeesController(IRepositoryManager repository, ILoggerManager logger, IMapper mapper)
         {
             _repository = repository;
             _logger = logger;
             _mapper = mapper;
         }
         [HttpGet]
-        public IActionResult GetEmployeesForCompany(Guid companyId)
+        public async Task<IActionResult> GetEmployeesForCompany(Guid companyId)
         {
             var company = _repository.Company.GetCompany(companyId, trackChanges: false);
             if (company == null)
@@ -39,7 +37,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("{id}", Name = "GetEmployeeForCompany")]
-        public IActionResult GetEmployeeForCompany(Guid companyId, Guid id)
+        public async Task<IActionResult> GetEmployeeForCompany(Guid companyId, Guid id)
         {
             var company = _repository.Company.GetCompany(companyId, trackChanges: false);
             if (company == null)
@@ -60,7 +58,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateEmployeeForCompany(Guid companyId, [FromBody] EmployeeForCreationDto employee)
+        public async Task<IActionResult> CreateEmployeeForCompany(Guid companyId, [FromBody] EmployeeForCreationDto employee)
         {
             if (employee == null)
             {
@@ -90,7 +88,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpDelete("{id}")]
-        public IActionResult DeleteEmployeeForCompany(Guid companyId, Guid id)
+        public async Task<IActionResult> DeleteEmployeeForCompany(Guid companyId, Guid id)
         {
             var company = _repository.Company.GetCompany(companyId, trackChanges: false);
             if (company == null)
@@ -111,7 +109,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult UpdateEmployeeForCompany(Guid companyId, Guid id, [FromBody]
+        public async Task<IActionResult> UpdateEmployeeForCompany(Guid companyId, Guid id, [FromBody]
         EmployeeForUpdateDto employee)
         {
             if (employee == null)
@@ -144,7 +142,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpPatch("{id}")]
-        public IActionResult PartiallyUpdateEmployeeForCompany(Guid companyId, Guid id, [FromBody] JsonPatchDocument<EmployeeForUpdateDto> patchDoc)
+        public async Task<IActionResult> PartiallyUpdateEmployeeForCompany(Guid companyId, Guid id, [FromBody] JsonPatchDocument<EmployeeForUpdateDto> patchDoc)
         {
             if (patchDoc == null)
             {
@@ -178,7 +176,7 @@ namespace WebAPI.Controllers
             return NoContent();
         }
         [HttpPut("{id}")]
-        public IActionResult UpdateEmployee(Guid id, [FromBody] EmployeeForUpdateDto employee)
+        public async Task<IActionResult> UpdateEmployee(Guid id, [FromBody] EmployeeForUpdateDto employee)
         {
             if (employee == null)
             {

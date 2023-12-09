@@ -35,7 +35,7 @@ namespace WebAPI.Controllers
             }
 
             [HttpGet("{id}", Name = "CompanyById")]
-            public IActionResult GetCompany(Guid id)
+            public async Task<IActionResult> GetCompany(Guid id)
             {
                 var company = _repository.Company.GetCompany(id, trackChanges: false);
                 if (company == null)
@@ -51,7 +51,7 @@ namespace WebAPI.Controllers
             }
 
             [HttpPost]
-            public IActionResult CreateCompany([FromBody] CompanyForCreationDto company)
+            public async Task<IActionResult> CreateCompany([FromBody] CompanyForCreationDto company)
             {
                 if (company == null)
                 {
@@ -71,7 +71,7 @@ namespace WebAPI.Controllers
             }
 
             [HttpGet("collection/({ids})", Name = "CompanyCollection")]
-            public IActionResult GetCompanyCollection([ModelBinder(BinderType = typeof(ArrayModelBinder))] IEnumerable<Guid> ids)
+            public async Task<IActionResult> GetCompanyCollection([ModelBinder(BinderType = typeof(ArrayModelBinder))] IEnumerable<Guid> ids)
             {
                 if (ids == null)
                 {
@@ -90,7 +90,7 @@ namespace WebAPI.Controllers
             }
 
             [HttpPost("collection")]
-            public IActionResult CreateCompanyCollection([FromBody]
+            public async Task<IActionResult> CreateCompanyCollection([FromBody]
             IEnumerable<CompanyForCreationDto> companyCollection)
             {
                 if (companyCollection == null)
@@ -112,7 +112,7 @@ namespace WebAPI.Controllers
             }
 
             [HttpDelete("{id}")]
-            public IActionResult DeleteCompany(Guid id)
+            public async Task<IActionResult> DeleteCompany(Guid id)
             {
                 var company = _repository.Company.GetCompany(id, trackChanges: false);
                 if (company == null)
@@ -126,7 +126,7 @@ namespace WebAPI.Controllers
             }
 
             [HttpPut("{id}")]
-            public IActionResult UpdateCompany(Guid id, [FromBody] CompanyForUpdateDto company)
+            public async Task<IActionResult> UpdateCompany(Guid id, [FromBody] CompanyForUpdateDto company)
             {
                 if (company == null)
                 {
