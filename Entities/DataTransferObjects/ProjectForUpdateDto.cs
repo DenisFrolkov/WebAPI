@@ -6,11 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entities.DataTransferObjects
 {
-    public class ProjectForUpdateDto
+    public class ProjectForUpdateDto : ProjectForManipulationDto
     {
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public string StartDate { get; set; }
-        public string EndDate { get; set; }
     }
 }

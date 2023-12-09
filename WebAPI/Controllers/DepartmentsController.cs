@@ -162,7 +162,13 @@ namespace WebAPI.Controllers
                 return NotFound();
             }
             var departmentToPatch = _mapper.Map<DepartmentForUpdateDto>(departmentEntity);
-            patchDoc.ApplyTo(departmentToPatch);
+            patchDoc.ApplyTo(departmentToPatch, ModelState);
+            TryValidateModel(departmentToPatch);
+            if (!ModelState.IsValid)
+            {
+                _logger.LogError("Invalid model state for the patch document");
+                return UnprocessableEntity(ModelState);
+            }
             _mapper.Map(departmentToPatch, departmentEntity);
             _repository.Save();
             return NoContent();

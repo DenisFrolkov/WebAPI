@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Entities.DataTransferObjects
 {
-    public class DepartmentForUpdateDto
+    public class DepartmentForUpdateDto : CompanyForManipulationDto
     {
-        public string Name { get; set; }
-        public string Manager { get; set; }
+
     }
 }

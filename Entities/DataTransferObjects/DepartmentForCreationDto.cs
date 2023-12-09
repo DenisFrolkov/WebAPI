@@ -7,14 +7,8 @@ using System.Threading.Tasks;
 
 namespace Entities.DataTransferObjects
 {
-    public class DepartmentForCreationDto
+    public class DepartmentForCreationDto : CompanyForManipulationDto
     {
-        [Required(ErrorMessage = "Department name is a required field.")]
-        [MaxLength(14, ErrorMessage = "Maximum length for the Name is 14 characters.")]
-        public string Name { get; set; }
 
-        [Required(ErrorMessage = "Department manager is a required field.")]
-        [MaxLength(20, ErrorMessage = "Maximum length for the Manager is 20 characters.")]
-        public string Manager { get; set; }
     }
 }

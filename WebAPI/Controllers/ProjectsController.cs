@@ -159,7 +159,13 @@ namespace WebAPI.Controllers
             return NotFound();
             }
             var projectToPatch = _mapper.Map<ProjectForUpdateDto>(projectEntity);
-            patchDoc.ApplyTo(projectToPatch);
+            patchDoc.ApplyTo(projectToPatch, ModelState);
+            TryValidateModel(projectToPatch);
+            if (!ModelState.IsValid)
+            {
+                _logger.LogError("Invalid model state for the patch document");
+                return UnprocessableEntity(ModelState);
+            }
             _mapper.Map(projectToPatch, projectEntity);
             _repository.Save();
             return NoContent();
