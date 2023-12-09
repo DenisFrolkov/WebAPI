@@ -113,6 +113,11 @@ namespace WebAPI.Controllers
                 _logger.LogError("ProjectForUpdateDto object sent from client is null.");
             return BadRequest("ProjectForUpdateDto object is null");
             }
+            if (!ModelState.IsValid)
+            {
+                _logger.LogError("Invalid model state for the ProjectForUpdateDto object");
+                return UnprocessableEntity(ModelState);
+            }
             var company = _repository.Company.GetCompany(companyId, trackChanges: false);
             if (company == null)
             {

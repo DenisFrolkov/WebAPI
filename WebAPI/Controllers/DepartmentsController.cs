@@ -115,6 +115,11 @@ namespace WebAPI.Controllers
                 _logger.LogError("DepartmentForUpdateDto object sent from client is null.");
                 return BadRequest("DepartmentForUpdateDto object is null");
             }
+            if (!ModelState.IsValid)
+            {
+                _logger.LogError("Invalid model state for the DepartmentForUpdateDto object");
+                return UnprocessableEntity(ModelState);
+            }
             var employee = _repository.Employee.GetEmployees(employeeId, trackChanges: false);
             if (employee == null)
             {
