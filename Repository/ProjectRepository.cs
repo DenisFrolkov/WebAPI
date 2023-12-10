@@ -16,11 +16,11 @@ namespace Repository
         : base(repositoryContext)
         {
         }
-        public IEnumerable<Project> GetProjects(Guid companyId, bool trackChanges) =>
+        public async Task<IEnumerable<Project>> GetProjectsAsync(Guid companyId, bool trackChanges) =>
         FindByCondition(e => e.CompanyId.Equals(companyId), trackChanges)
         .OrderBy(e => e.Name);
 
-        public Project GetProject(Guid companyId, Guid id, bool trackChanges) =>
+        public async Task<Project> GetProjectAsync(Guid companyId, Guid id, bool trackChanges) =>
         FindByCondition(e => e.CompanyId.Equals(companyId) && e.Id.Equals(id), trackChanges).SingleOrDefault();
 
         public void CreateProjectForCompany(Guid companyId, Project project)

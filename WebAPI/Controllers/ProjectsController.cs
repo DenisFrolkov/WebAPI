@@ -24,13 +24,13 @@ namespace WebAPI.Controllers
         [HttpGet]
         public async Task<IActionResult> GetProjectsForCompany(Guid companyId)
         {
-            var company = _repository.Company.GetCompany(companyId, trackChanges: false);
+            var company = await _repository.Company.GetCompany(companyId, trackChanges: false);
             if (company == null)
             {
                 _logger.LogInfo($"Company with id: {companyId} doesn't exist in the database.");
                 return NotFound();
             }
-            var projectsFromDb = _repository.Project.GetProjects(companyId, trackChanges: false);
+            var projectsFromDb = await _repository.Project.GetProjects(companyId, trackChanges: false);
             var projectsDto = _mapper.Map<IEnumerable<ProjectDto>>(projectsFromDb);
             return Ok(projectsDto);
         }
@@ -38,13 +38,13 @@ namespace WebAPI.Controllers
         [HttpGet("{id}", Name = "GetProjectForCompany")]
         public async Task<IActionResult> GetProjectForCompany(Guid companyId, Guid id)
         {
-            var company = _repository.Company.GetCompany(companyId, trackChanges: false);
+            var company = await _repository.Company.GetCompany(companyId, trackChanges: false);
             if (company == null)
             {
                 _logger.LogInfo($"Company with id: {companyId} doesn't exist in the database.");
                 return NotFound();
             }
-            var projectDb = _repository.Project.GetProject(companyId, id, trackChanges: false);
+            var projectDb = await _repository.Project.GetProject(companyId, id, trackChanges: false);
             if (projectDb == null)
             {
                 _logger.LogInfo($"Project with id: {id} doesn't exist in the database.");
@@ -67,7 +67,7 @@ namespace WebAPI.Controllers
                 _logger.LogError("Invalid model state for the CreateProjectForCompany object");
                 return UnprocessableEntity(ModelState);
             }
-            var company = _repository.Company.GetCompany(companyId, trackChanges: false);
+            var company = await _repository.Company.GetCompany(companyId, trackChanges: false);
             if (company == null)
             {
                 _logger.LogError($"Company with id: {companyId} doesn't exist in the database."); // Исправлен вызов LogInfo на LogError
@@ -75,7 +75,7 @@ namespace WebAPI.Controllers
             }
             var projectEntity = _mapper.Map<Project>(project);
             _repository.Project.CreateProjectForCompany(companyId, projectEntity);
-            _repository.Save();
+            await _repository.SaveAsync();
             var projectToReturn = _mapper.Map<ProjectDto>(projectEntity);
             return CreatedAtRoute("GetProjectForCompany", new // Исправлено имя маршрута на "GetProjectForCompany"
             {
@@ -87,13 +87,13 @@ namespace WebAPI.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteProjectForCompany(Guid companyId, Guid id)
         {
-            var company = _repository.Company.GetCompany(companyId, trackChanges: false);
+            var company = await _repository.Company.GetCompany(companyId, trackChanges: false);
             if (company == null)
             {
                 _logger.LogInfo($"Company with id: {companyId} doesn't exist in the database.");
             return NotFound();
             }
-            var projectForCompany = _repository.Project.GetProject(companyId, id,
+            var projectForCompany = await _repository.Project.GetProject(companyId, id,
             trackChanges: false);
             if (projectForCompany == null)
             {
@@ -101,7 +101,7 @@ namespace WebAPI.Controllers
             return NotFound();
             }
             _repository.Project.DeleteProject(projectForCompany);
-            _repository.Save();
+            await _repository.SaveAsync();
             return NoContent();
         }
 
@@ -118,13 +118,13 @@ namespace WebAPI.Controllers
                 _logger.LogError("Invalid model state for the ProjectForUpdateDto object");
                 return UnprocessableEntity(ModelState);
             }
-            var company = _repository.Company.GetCompany(companyId, trackChanges: false);
+            var company = await _repository.Company.GetCompany(companyId, trackChanges: false);
             if (company == null)
             {
                 _logger.LogInfo($"Company with id: {companyId} doesn't exist in the database.");
             return NotFound();
             }
-            var projectEntity = _repository.Project.GetProject(companyId, id,
+            var projectEntity = await _repository.Project.GetProject(companyId, id,
            trackChanges:
             true);
             if (projectEntity == null)
@@ -133,7 +133,7 @@ namespace WebAPI.Controllers
             return NotFound();
             }
             _mapper.Map(project, projectEntity);
-            _repository.Save();
+            await _repository.SaveAsync();
             return NoContent();
         }
         [HttpPatch("{id}")]
@@ -144,13 +144,13 @@ namespace WebAPI.Controllers
                 _logger.LogError("patchDoc object sent from client is null.");
                 return BadRequest("patchDoc object is null");
             }
-            var company = _repository.Company.GetCompany(companyId, trackChanges: false);
+            var company = await _repository.Company.GetCompany(companyId, trackChanges: false);
             if (company == null)
             {
                 _logger.LogInfo($"Company with id: {companyId} doesn't exist in the database.");
             return NotFound();
             }
-            var projectEntity = _repository.Project.GetProject(companyId, id,
+            var projectEntity = await _repository.Project.GetProject(companyId, id,
            trackChanges:
             true);
             if (projectEntity == null)
@@ -167,7 +167,7 @@ namespace WebAPI.Controllers
                 return UnprocessableEntity(ModelState);
             }
             _mapper.Map(projectToPatch, projectEntity);
-            _repository.Save();
+            await _repository.SaveAsync();
             return NoContent();
         }
     }

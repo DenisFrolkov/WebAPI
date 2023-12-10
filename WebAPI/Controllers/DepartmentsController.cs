@@ -24,13 +24,13 @@ namespace WebAPI.Controllers
         [HttpGet]
         public async Task<IActionResult> GetDepartmentForEmployee(Guid employeeId)
         {
-            var employee = _repository.Employee.GetEmployees(employeeId, trackChanges: false);
+            var employee = await _repository.Employee.GetEmployees(employeeId, trackChanges: false);
             if (employee == null)
             {
                 _logger.LogInfo($"Employee with id: {employeeId} doesn't exist in the database.");
                 return NotFound();
             }
-            var departmentsFromDb = _repository.Department.GetDepartments(employeeId, trackChanges: false);
+            var departmentsFromDb = await _repository.Department.GetDepartments(employeeId, trackChanges: false);
             var departmentDto = _mapper.Map<IEnumerable<DepartmentDto>>(departmentsFromDb);
             return Ok(departmentDto);
         }
@@ -38,13 +38,13 @@ namespace WebAPI.Controllers
         [HttpGet("{id}", Name = "GetDepartmentForEmployee")]
         public async Task<IActionResult> GetDepartmentForEmployee(Guid employeeId, Guid id)
         {
-            var employee = _repository.Employee.GetEmployees(employeeId, trackChanges: false);
+            var employee = await _repository.Employee.GetEmployees(employeeId, trackChanges: false);
             if (employee == null)
             {
                 _logger.LogInfo($"Company with id: {employeeId} doesn't exist in the database.");
             return NotFound();
             }
-            var departmentDb = _repository.Department.GetDepartment(employeeId, id,
+            var departmentDb = await _repository.Department.GetDepartment(employeeId, id,
            trackChanges:
             false);
             if (departmentDb == null)
@@ -69,7 +69,7 @@ namespace WebAPI.Controllers
                 _logger.LogError("Invalid model state for the CreateDepartmentForEmployee object");
                 return UnprocessableEntity(ModelState);
             }
-            var employee = _repository.Employee.GetEmployees(employeeId, trackChanges: false);
+            var employee = await _repository.Employee.GetEmployees(employeeId, trackChanges: false);
             if (employee == null)
             {
                 _logger.LogError($"Employee with id: {employeeId} doesn't exist in the database.");
@@ -77,7 +77,7 @@ namespace WebAPI.Controllers
             }
             var departmentEntity = _mapper.Map<Department>(department);
             _repository.Department.CreateDepartmentForEmployee(employeeId, departmentEntity);
-            _repository.Save();
+            await _repository.SaveAsync();
             var departmentToReturn = _mapper.Map<DepartmentDto>(departmentEntity);
             return CreatedAtRoute("GetDepartmentForEmployee", new
             {
@@ -88,20 +88,20 @@ namespace WebAPI.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteDepartmentForEmployee(Guid employeeId, Guid id)
         {
-            var employee = _repository.Employee.GetEmployees(employeeId, trackChanges: false);
+            var employee = await _repository.Employee.GetEmployees(employeeId, trackChanges: false);
             if (employee == null)
             {
                 _logger.LogInfo($"Employee with id: {employeeId} doesn't exist in the database.");
                 return NotFound();
             }
-            var departmentForEmployee = _repository.Department.GetDepartment(employeeId, id, trackChanges: false);
+            var departmentForEmployee = await _repository.Department.GetDepartment(employeeId, id, trackChanges: false);
             if (departmentForEmployee == null)
             {
                 _logger.LogInfo($"Department with id: {id} doesn't exist in the database.");
                 return NotFound();
             }
             _repository.Department.DeleteDepartment(departmentForEmployee);
-            _repository.Save();
+            await _repository.SaveAsync();
             return NoContent();
         }
 
@@ -118,13 +118,13 @@ namespace WebAPI.Controllers
                 _logger.LogError("Invalid model state for the DepartmentForUpdateDto object");
                 return UnprocessableEntity(ModelState);
             }
-            var employee = _repository.Employee.GetEmployees(employeeId, trackChanges: false);
+            var employee = await _repository.Employee.GetEmployees(employeeId, trackChanges: false);
             if (employee == null)
             {
                 _logger.LogInfo($"Employee with id: {employeeId} doesn't exist in the database.");
                 return NotFound();
             }
-            var departmentEntity = _repository.Department.GetDepartment(employeeId, id,
+            var departmentEntity = await _repository.Department.GetDepartment(employeeId, id,
            trackChanges:
             true);
             if (departmentEntity == null)
@@ -133,7 +133,7 @@ namespace WebAPI.Controllers
                 return NotFound();
             }
             _mapper.Map(department, departmentEntity);
-            _repository.Save();
+            await _repository.SaveAsync();
             return NoContent();
         }
 
@@ -145,13 +145,13 @@ namespace WebAPI.Controllers
                 _logger.LogError("patchDoc object sent from client is null.");
                 return BadRequest("patchDoc object is null");
             }
-            var employee = _repository.Employee.GetEmployees(employeeId, trackChanges: false);
+            var employee = await _repository.Employee.GetEmployees(employeeId, trackChanges: false);
             if (employee == null)
             {
                 _logger.LogInfo($"Employee with id: {employeeId} doesn't exist in the database.");
                 return NotFound();
             }
-            var departmentEntity = _repository.Department.GetDepartment(employeeId, id,
+            var departmentEntity = await _repository.Department.GetDepartment(employeeId, id,
            trackChanges:
             true);
             if (departmentEntity == null)
@@ -168,7 +168,7 @@ namespace WebAPI.Controllers
                 return UnprocessableEntity(ModelState);
             }
             _mapper.Map(departmentToPatch, departmentEntity);
-            _repository.Save();
+            await _repository.SaveAsync();
             return NoContent();
         }
     }

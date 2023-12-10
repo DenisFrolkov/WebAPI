@@ -9,8 +9,8 @@ namespace Contracts
 {
     public interface IProjectRepository
     {
-        IEnumerable<Project> GetProjects(Guid companyId, bool trackChanges);
-        Project GetProject(Guid companyId, Guid id, bool trackChanges);
+        Task<IEnumerable<Project>> GetProjectsAsync(Guid companyId, bool trackChanges);
+        Task<Project> GetProjectAsync(Guid companyId, Guid id, bool trackChanges);
         void CreateProjectForCompany(Guid companyId, Project project);
         void DeleteProject(Project project);
 

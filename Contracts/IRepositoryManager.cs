@@ -12,6 +12,6 @@ namespace Contracts
         IEmployeeRepository Employee { get; }
         IDepartmentRepository Department { get; }
         IProjectRepository Project { get; }
-        void Save();
+        Task SaveAsync();
     }
 }

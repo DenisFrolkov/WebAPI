@@ -11,11 +11,11 @@ namespace Repository
         {
         }
 
-        public IEnumerable<Department> GetDepartments(Guid employeeId, bool trackChanges) =>
+        public async Task<IEnumerable<Department>> GetDepartmentsAsync(Guid employeeId, bool trackChanges) =>
         FindByCondition(e => e.EmployeeId.Equals(employeeId), trackChanges)
         .OrderBy(e => e.Name);
 
-        public Department GetDepartment(Guid employeesId, Guid id, bool trackChanges) =>
+        public async Task<Department> GetDepartmentAsync(Guid employeesId, Guid id, bool trackChanges) =>
         FindByCondition(e => e.EmployeeId.Equals(employeesId) && e.Id.Equals(id), trackChanges).SingleOrDefault();
         public void CreateDepartmentForEmployee(Guid employeeId, Department department)
         {
