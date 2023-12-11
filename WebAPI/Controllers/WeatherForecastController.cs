@@ -16,7 +16,7 @@ namespace WebAPI.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
-            _repository.Save();
+            _repository.SaveAsync();
             return new string[] { "value1", "value2" };
         }
     }

@@ -24,13 +24,13 @@ namespace WebAPI.Controllers
         [HttpGet]
         public async Task<IActionResult> GetProjectsForCompany(Guid companyId)
         {
-            var company = await _repository.Company.GetCompany(companyId, trackChanges: false);
+            var company = await _repository.Company.GetCompanyAsync(companyId, trackChanges: false);
             if (company == null)
             {
                 _logger.LogInfo($"Company with id: {companyId} doesn't exist in the database.");
                 return NotFound();
             }
-            var projectsFromDb = await _repository.Project.GetProjects(companyId, trackChanges: false);
+            var projectsFromDb = await _repository.Project.GetProjectsAsync(companyId, trackChanges: false);
             var projectsDto = _mapper.Map<IEnumerable<ProjectDto>>(projectsFromDb);
             return Ok(projectsDto);
         }
@@ -38,13 +38,13 @@ namespace WebAPI.Controllers
         [HttpGet("{id}", Name = "GetProjectForCompany")]
         public async Task<IActionResult> GetProjectForCompany(Guid companyId, Guid id)
         {
-            var company = await _repository.Company.GetCompany(companyId, trackChanges: false);
+            var company = await _repository.Company.GetCompanyAsync(companyId, trackChanges: false);
             if (company == null)
             {
                 _logger.LogInfo($"Company with id: {companyId} doesn't exist in the database.");
                 return NotFound();
             }
-            var projectDb = await _repository.Project.GetProject(companyId, id, trackChanges: false);
+            var projectDb = await _repository.Project.GetProjectAsync(companyId, id, trackChanges: false);
             if (projectDb == null)
             {
                 _logger.LogInfo($"Project with id: {id} doesn't exist in the database.");
@@ -67,7 +67,7 @@ namespace WebAPI.Controllers
                 _logger.LogError("Invalid model state for the CreateProjectForCompany object");
                 return UnprocessableEntity(ModelState);
             }
-            var company = await _repository.Company.GetCompany(companyId, trackChanges: false);
+            var company = await _repository.Company.GetCompanyAsync(companyId, trackChanges: false);
             if (company == null)
             {
                 _logger.LogError($"Company with id: {companyId} doesn't exist in the database."); // Исправлен вызов LogInfo на LogError
@@ -87,13 +87,13 @@ namespace WebAPI.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteProjectForCompany(Guid companyId, Guid id)
         {
-            var company = await _repository.Company.GetCompany(companyId, trackChanges: false);
+            var company = await _repository.Company.GetCompanyAsync(companyId, trackChanges: false);
             if (company == null)
             {
                 _logger.LogInfo($"Company with id: {companyId} doesn't exist in the database.");
             return NotFound();
             }
-            var projectForCompany = await _repository.Project.GetProject(companyId, id,
+            var projectForCompany = await _repository.Project.GetProjectAsync(companyId, id,
             trackChanges: false);
             if (projectForCompany == null)
             {
@@ -118,13 +118,13 @@ namespace WebAPI.Controllers
                 _logger.LogError("Invalid model state for the ProjectForUpdateDto object");
                 return UnprocessableEntity(ModelState);
             }
-            var company = await _repository.Company.GetCompany(companyId, trackChanges: false);
+            var company = await _repository.Company.GetCompanyAsync(companyId, trackChanges: false);
             if (company == null)
             {
                 _logger.LogInfo($"Company with id: {companyId} doesn't exist in the database.");
             return NotFound();
             }
-            var projectEntity = await _repository.Project.GetProject(companyId, id,
+            var projectEntity = await _repository.Project.GetProjectAsync(companyId, id,
            trackChanges:
             true);
             if (projectEntity == null)
@@ -144,13 +144,13 @@ namespace WebAPI.Controllers
                 _logger.LogError("patchDoc object sent from client is null.");
                 return BadRequest("patchDoc object is null");
             }
-            var company = await _repository.Company.GetCompany(companyId, trackChanges: false);
+            var company = await _repository.Company.GetCompanyAsync(companyId, trackChanges: false);
             if (company == null)
             {
                 _logger.LogInfo($"Company with id: {companyId} doesn't exist in the database.");
             return NotFound();
             }
-            var projectEntity = await _repository.Project.GetProject(companyId, id,
+            var projectEntity = await _repository.Project.GetProjectAsync(companyId, id,
            trackChanges:
             true);
             if (projectEntity == null)
