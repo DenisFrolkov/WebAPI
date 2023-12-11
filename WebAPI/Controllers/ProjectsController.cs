@@ -5,6 +5,7 @@ using Entities.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
+using WebAPI.ActionFilters;
 
 namespace WebAPI.Controllers
 {
@@ -55,18 +56,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost]
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
         public async Task<IActionResult> CreateProjectForCompany(Guid companyId, [FromBody] ProjectForCreationDto project)
         {
-            if (project == null)
-            {
-                _logger.LogError("ProjectForCreationDto object sent from client is null.");
-                return BadRequest("ProjectForCreationDto object is null");
-            }
-            if (!ModelState.IsValid)
-            {
-                _logger.LogError("Invalid model state for the CreateProjectForCompany object");
-                return UnprocessableEntity(ModelState);
-            }
             var company = await _repository.Company.GetCompanyAsync(companyId, trackChanges: false);
             if (company == null)
             {
@@ -85,79 +77,30 @@ namespace WebAPI.Controllers
         }
 
         [HttpDelete("{id}")]
+        [ServiceFilter(typeof(ValidateProjectForCompanyExistsAttribute))]
         public async Task<IActionResult> DeleteProjectForCompany(Guid companyId, Guid id)
         {
-            var company = await _repository.Company.GetCompanyAsync(companyId, trackChanges: false);
-            if (company == null)
-            {
-                _logger.LogInfo($"Company with id: {companyId} doesn't exist in the database.");
-            return NotFound();
-            }
-            var projectForCompany = await _repository.Project.GetProjectAsync(companyId, id,
-            trackChanges: false);
-            if (projectForCompany == null)
-            {
-                _logger.LogInfo($"Project with id: {id} doesn't exist in the database.");
-            return NotFound();
-            }
+            var projectForCompany = HttpContext.Items["project"] as Project;
             _repository.Project.DeleteProject(projectForCompany);
             await _repository.SaveAsync();
             return NoContent();
         }
 
         [HttpPut("{id}")]
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
+        [ServiceFilter(typeof(ValidateEmployeeForCompanyExistsAttribute))]
         public async Task<IActionResult> UpdateProjectForCompany(Guid companyId, Guid id, [FromBody] ProjectForUpdateDto project)
         {
-            if (project == null)
-            {
-                _logger.LogError("ProjectForUpdateDto object sent from client is null.");
-            return BadRequest("ProjectForUpdateDto object is null");
-            }
-            if (!ModelState.IsValid)
-            {
-                _logger.LogError("Invalid model state for the ProjectForUpdateDto object");
-                return UnprocessableEntity(ModelState);
-            }
-            var company = await _repository.Company.GetCompanyAsync(companyId, trackChanges: false);
-            if (company == null)
-            {
-                _logger.LogInfo($"Company with id: {companyId} doesn't exist in the database.");
-            return NotFound();
-            }
-            var projectEntity = await _repository.Project.GetProjectAsync(companyId, id,
-           trackChanges:
-            true);
-            if (projectEntity == null)
-            {
-                _logger.LogInfo($"Project with id: {id} doesn't exist in the database.");
-            return NotFound();
-            }
+            var projectEntity = HttpContext.Items["project"] as Project;
             _mapper.Map(project, projectEntity);
             await _repository.SaveAsync();
             return NoContent();
         }
         [HttpPatch("{id}")]
+        [ServiceFilter(typeof(ValidateEmployeeForCompanyExistsAttribute))]
         public async Task<IActionResult> PartiallyUpdateProjectForCompany(Guid companyId, Guid id, [FromBody] JsonPatchDocument<ProjectForUpdateDto> patchDoc)
         {
-            if (patchDoc == null)
-            {
-                _logger.LogError("patchDoc object sent from client is null.");
-                return BadRequest("patchDoc object is null");
-            }
-            var company = await _repository.Company.GetCompanyAsync(companyId, trackChanges: false);
-            if (company == null)
-            {
-                _logger.LogInfo($"Company with id: {companyId} doesn't exist in the database.");
-            return NotFound();
-            }
-            var projectEntity = await _repository.Project.GetProjectAsync(companyId, id,
-           trackChanges:
-            true);
-            if (projectEntity == null)
-            {
-                _logger.LogInfo($"Project with id: {id} doesn't exist in the database.");
-            return NotFound();
-            }
+            var projectEntity = HttpContext.Items["project"] as Project;
             var projectToPatch = _mapper.Map<ProjectForUpdateDto>(projectEntity);
             patchDoc.ApplyTo(projectToPatch, ModelState);
             TryValidateModel(projectToPatch);

@@ -4,6 +4,7 @@ using AutoMapper;
 using WebAPI.Extensions;
 using Contracts;
 using Microsoft.AspNetCore.Mvc;
+using WebAPI.ActionFilters;
 
 namespace WebAPI;
 
@@ -39,10 +40,15 @@ public class Startup
         {
             options.SuppressModelStateInvalidFilter = true;
         });
+        services.AddScoped<ValidationFilterAttribute>();
+        services.AddScoped<ValidateCompanyExistsAttribute>();
+        services.AddScoped<ValidateEmployeeForCompanyExistsAttribute>();
+        services.AddScoped<ValidateDepartmentForEmployeeExistsAttribute>();
+        services.AddScoped<ValidateProjectForCompanyExistsAttribute>();
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env,
+    public void Configure(IApplicationBuilder app, IWebHostEnvironment env,
     ILoggerManager logger)
         {
             if (env.IsDevelopment())
