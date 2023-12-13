@@ -2,9 +2,11 @@
 using Contracts;
 using Entities.DataTransferObjects;
 using Entities.Models;
+using Entities.RequestFeatures;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using WebAPI.ActionFilters;
 
 namespace WebAPI.Controllers
@@ -23,7 +25,7 @@ namespace WebAPI.Controllers
             _mapper = mapper;
         }
         [HttpGet]
-        public async Task<IActionResult> GetProjectsForCompany(Guid companyId)
+        public async Task<IActionResult> GetProjectsForCompany(Guid companyId, [FromQuery] ProjectParameters projectParameters)
         {
             var company = await _repository.Company.GetCompanyAsync(companyId, trackChanges: false);
             if (company == null)
@@ -31,7 +33,8 @@ namespace WebAPI.Controllers
                 _logger.LogInfo($"Company with id: {companyId} doesn't exist in the database.");
                 return NotFound();
             }
-            var projectsFromDb = await _repository.Project.GetProjectsAsync(companyId, trackChanges: false);
+            var projectsFromDb = await _repository.Project.GetProjectsAsync(companyId, projectParameters, trackChanges: false);
+            Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(projectsFromDb.MetaData));
             var projectsDto = _mapper.Map<IEnumerable<ProjectDto>>(projectsFromDb);
             return Ok(projectsDto);
         }

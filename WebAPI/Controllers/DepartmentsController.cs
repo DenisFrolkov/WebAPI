@@ -2,9 +2,11 @@
 using Contracts;
 using Entities.DataTransferObjects;
 using Entities.Models;
+using Entities.RequestFeatures;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using WebAPI.ActionFilters;
 
 namespace WebAPI.Controllers
@@ -23,7 +25,7 @@ namespace WebAPI.Controllers
             _mapper = mapper;
          }
         [HttpGet]
-        public async Task<IActionResult> GetDepartmentForEmployee(Guid employeeId)
+        public async Task<IActionResult> GetDepartmentsForEmployee(Guid employeeId, [FromQuery] DepartmentParameters departmentParameters)
         {
             var employee = await _repository.Employee.GetEmployeesAsync(employeeId, trackChanges: false);
             if (employee == null)
@@ -31,7 +33,8 @@ namespace WebAPI.Controllers
                 _logger.LogInfo($"Employee with id: {employeeId} doesn't exist in the database.");
                 return NotFound();
             }
-            var departmentsFromDb = await _repository.Department.GetDepartmentsAsync(employeeId, trackChanges: false);
+            var departmentsFromDb = await _repository.Department.GetDepartmentsAsync(employeeId, departmentParameters, trackChanges: false);
+            Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(departmentsFromDb.MetaData));
             var departmentDto = _mapper.Map<IEnumerable<DepartmentDto>>(departmentsFromDb);
             return Ok(departmentDto);
         }

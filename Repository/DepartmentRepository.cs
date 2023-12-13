@@ -1,6 +1,9 @@
 ﻿using Contracts;
 using Entities.Models;
 using Entities;
+using Entities.RequestFeatures;
+using System.ComponentModel.Design;
+using Microsoft.EntityFrameworkCore;
 
 namespace Repository
 {
@@ -11,9 +14,15 @@ namespace Repository
         {
         }
 
-        public async Task<IEnumerable<Department>> GetDepartmentsAsync(Guid employeeId, bool trackChanges) =>
-        FindByCondition(e => e.EmployeeId.Equals(employeeId), trackChanges)
-        .OrderBy(e => e.Name);
+        public async Task<PagedList<Department>> GetDepartmentsAsync(Guid employeeId, DepartmentParameters departmentParameters, bool trackChanges)
+        {
+            var departments = await FindByCondition(e => e.EmployeeId.Equals(employeeId),
+            trackChanges)
+            .OrderBy(e => e.Name)
+            .ToListAsync();
+            return PagedList<Department>
+            .ToPagedList(departments, departmentParameters.PageNumber, departmentParameters.PageSize);
+        }
 
         public async Task<Department> GetDepartmentAsync(Guid employeesId, Guid id, bool trackChanges) =>
         FindByCondition(e => e.EmployeeId.Equals(employeesId) && e.Id.Equals(id), trackChanges).SingleOrDefault();

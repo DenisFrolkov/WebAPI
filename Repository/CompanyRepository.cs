@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Entities.RequestFeatures;
+using System.ComponentModel.Design;
 
 namespace Repository
 {
@@ -17,10 +19,15 @@ namespace Repository
         {
         }
 
-        public async Task<IEnumerable<Company>> GetAllCompaniesAsync(bool trackChanges)
-        => await FindAll(trackChanges)
-         .OrderBy(c => c.Name)
-         .ToListAsync();
+
+        public async Task<PagedList<Company>> GetAllCompaniesAsync(CompanyParameters companyParameters, bool trackChanges)
+        {
+            var companies = await FindAll(trackChanges)
+            .OrderBy(c => c.Name)
+            .ToListAsync();
+            return PagedList<Company>
+            .ToPagedList(companies, companyParameters.PageNumber, companyParameters.PageSize);
+        }
 
         public async Task<Company> GetCompanyAsync(Guid companyId, bool trackChanges) =>
          await FindByCondition(c => c.Id.Equals(companyId), trackChanges)
@@ -36,7 +43,6 @@ namespace Repository
         {
             Delete(company);
         }
-
     }
 }
 

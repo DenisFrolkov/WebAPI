@@ -3,9 +3,11 @@ using Contracts;
 using Entities;
 using Entities.DataTransferObjects;
 using Entities.Models;
+using Entities.RequestFeatures;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System;
 using WebAPI.ActionFilters;
 using WebAPI.ModelBinders;
@@ -31,10 +33,11 @@ namespace WebAPI.Controllers
             }
 
             [HttpGet]
-            public async Task<IActionResult> GetCompanies()
+            public async Task<IActionResult> GetCompanies([FromQuery] CompanyParameters companyParameters)
             {
-                var companies = await _repository.Company.GetAllCompaniesAsync(trackChanges: false);
-                var companiesDto = _mapper.Map<IEnumerable<CompanyDto>>(companies);
+                var companiesFromDb = await _repository.Company.GetAllCompaniesAsync(companyParameters, trackChanges: false);
+                Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(companiesFromDb.MetaData));
+                var companiesDto = _mapper.Map<IEnumerable<CompanyDto>>(companiesFromDb);
                 return Ok(companiesDto);
             }
 

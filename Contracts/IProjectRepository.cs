@@ -1,4 +1,5 @@
 ﻿using Entities.Models;
+using Entities.RequestFeatures;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace Contracts
 {
     public interface IProjectRepository
     {
-        Task<IEnumerable<Project>> GetProjectsAsync(Guid companyId, bool trackChanges);
+        Task<PagedList<Project>> GetProjectsAsync(Guid companyId, ProjectParameters projectParameters, bool trackChanges);
         Task<Project> GetProjectAsync(Guid companyId, Guid id, bool trackChanges);
         void CreateProjectForCompany(Guid companyId, Project project);
         void DeleteProject(Project project);

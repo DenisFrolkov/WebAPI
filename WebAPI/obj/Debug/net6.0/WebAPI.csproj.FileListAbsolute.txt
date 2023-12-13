@@ -186,7 +186,6 @@ C:\Users\denis\Source\Repos\DenisFrolkov\WebAPI\WebAPI\obj\Debug\net6.0\WebAPI.G
 C:\Users\denis\Source\Repos\DenisFrolkov\WebAPI\WebAPI\obj\Debug\net6.0\WebAPI.AssemblyInfoInputs.cache
 C:\Users\denis\Source\Repos\DenisFrolkov\WebAPI\WebAPI\obj\Debug\net6.0\WebAPI.AssemblyInfo.cs
 C:\Users\denis\Source\Repos\DenisFrolkov\WebAPI\WebAPI\obj\Debug\net6.0\WebAPI.csproj.CoreCompileInputs.cache
-C:\Users\denis\Source\Repos\DenisFrolkov\WebAPI\WebAPI\obj\Debug\net6.0\WebAPI.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\denis\Source\Repos\DenisFrolkov\WebAPI\WebAPI\obj\Debug\net6.0\WebAPI.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\denis\Source\Repos\DenisFrolkov\WebAPI\WebAPI\obj\Debug\net6.0\staticwebassets\msbuild.WebAPI.Microsoft.AspNetCore.StaticWebAssets.props
 C:\Users\denis\Source\Repos\DenisFrolkov\WebAPI\WebAPI\obj\Debug\net6.0\staticwebassets\msbuild.build.WebAPI.props
