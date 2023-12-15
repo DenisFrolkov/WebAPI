@@ -22,8 +22,7 @@ namespace Repository
 
         public async Task<PagedList<Project>> GetProjectsAsync(Guid companyId, ProjectParameters projectParameters, bool trackChanges)
         {
-            var projects = await FindByCondition(e => e.CompanyId.Equals(companyId),
-            trackChanges)
+            var projects = await FindByCondition(e => e.CompanyId.Equals(companyId), trackChanges)
             .OrderBy(e => e.Name)
             .ToListAsync();
             return PagedList<Project>
