@@ -10,5 +10,7 @@ namespace Entities.RequestFeatures
     public class ProjectParameters : RequestParameters
     {
         public string ProjectName { get; set; }
+
+        public bool ValidProjectNameRange => ProjectName == ProjectName;
     }
 }

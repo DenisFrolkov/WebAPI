@@ -16,7 +16,7 @@ namespace Repository
 
         public async Task<PagedList<Department>> GetDepartmentsAsync(Guid employeeId, DepartmentParameters departmentParameters, bool trackChanges)
         {
-            var departments = await FindByCondition(e => e.EmployeeId.Equals(employeeId), trackChanges)
+            var departments = await FindByCondition(e => e.EmployeeId.Equals(employeeId) && e.Name == departmentParameters.DepartmentName, trackChanges)
             .OrderBy(e => e.Name)
             .ToListAsync();
             return PagedList<Department>

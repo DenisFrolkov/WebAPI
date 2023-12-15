@@ -9,7 +9,7 @@ namespace Entities.RequestFeatures
     public class DepartmentParameters : RequestParameters
     {
         public string DepartmentName { get; set; }
+        public bool ValidDepartmentNameRange => DepartmentName == DepartmentName;
 
-        public string DepartmentManager { get; set; }
     }
 }

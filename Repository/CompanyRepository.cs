@@ -19,10 +19,10 @@ namespace Repository
         {
         }
 
-
+      
         public async Task<PagedList<Company>> GetAllCompaniesAsync(CompanyParameters companyParameters, bool trackChanges)
         {
-            var companies = await FindAll(trackChanges)
+            var companies = await FindByCondition(e => e.Name == companyParameters.CompamyName, trackChanges)
             .OrderBy(c => c.Name)
             .ToListAsync();
             return PagedList<Company>

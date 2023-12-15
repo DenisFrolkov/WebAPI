@@ -35,6 +35,8 @@ namespace WebAPI.Controllers
             [HttpGet]
             public async Task<IActionResult> GetCompanies([FromQuery] CompanyParameters companyParameters)
             {
+                if (!companyParameters.ValidCompanytNameRange)
+                    return BadRequest("A company by that name doesn't exist");
                 var companiesFromDb = await _repository.Company.GetAllCompaniesAsync(companyParameters, trackChanges: false);
                 Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(companiesFromDb.MetaData));
                 var companiesDto = _mapper.Map<IEnumerable<CompanyDto>>(companiesFromDb);
