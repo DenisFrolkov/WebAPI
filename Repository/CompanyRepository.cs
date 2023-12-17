@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Entities.RequestFeatures;
 using System.ComponentModel.Design;
+using Repository.Extensions;
 
 namespace Repository
 {
@@ -22,7 +23,8 @@ namespace Repository
       
         public async Task<PagedList<Company>> GetAllCompaniesAsync(CompanyParameters companyParameters, bool trackChanges)
         {
-            var companies = await FindByCondition(e => e.Name == companyParameters.CompamyName, trackChanges)
+            var companies = await FindAll(trackChanges)
+            .Search(companyParameters.SearchTerm)
             .OrderBy(c => c.Name)
             .ToListAsync();
             return PagedList<Company>

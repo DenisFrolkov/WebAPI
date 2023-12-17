@@ -27,8 +27,6 @@ namespace WebAPI.Controllers
         [HttpGet]
         public async Task<IActionResult> GetProjectsForCompany(Guid companyId, [FromQuery] ProjectParameters projectParameters)
         {
-            if (!projectParameters.ValidProjectNameRange)
-                return BadRequest("A project by that name doesn't exist");
             var company = await _repository.Company.GetCompanyAsync(companyId, trackChanges: false);
             if (company == null)
             {

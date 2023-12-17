@@ -27,8 +27,6 @@ namespace WebAPI.Controllers
         [HttpGet]
         public async Task<IActionResult> GetDepartmentsForEmployee(Guid employeeId, [FromQuery] DepartmentParameters departmentParameters)
         {
-            if (!departmentParameters.ValidDepartmentNameRange)
-                return BadRequest("A project by that name doesn't exist");
             var employee = await _repository.Employee.GetEmployeesAsync(employeeId, trackChanges: false);
             if (employee == null)
             {

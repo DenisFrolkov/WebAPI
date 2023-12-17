@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Microsoft.VisualBasic;
 using Entities.RequestFeatures;
 using Microsoft.EntityFrameworkCore;
+using Repository.Extensions;
 
 namespace Repository
 {
@@ -22,7 +23,8 @@ namespace Repository
 
         public async Task<PagedList<Project>> GetProjectsAsync(Guid companyId, ProjectParameters projectParameters, bool trackChanges)
         {
-            var projects = await FindByCondition(e => e.CompanyId.Equals(companyId) && e.Name == projectParameters.ProjectName, trackChanges)
+            var projects = await FindByCondition(e => e.CompanyId.Equals(companyId), trackChanges)
+            .Search(projectParameters.SearchTerm)
             .OrderBy(e => e.Name)
             .ToListAsync();
             return PagedList<Project>
