@@ -9,6 +9,11 @@ namespace Entities.RequestFeatures
 {
     public class ProjectParameters : RequestParameters
     {
+        public ProjectParameters()
+        {
+            OrderBy = "name";
+        }
+
         public string SearchTerm { get; set; }
     }
 }

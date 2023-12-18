@@ -24,8 +24,8 @@ namespace Repository
         public async Task<PagedList<Company>> GetAllCompaniesAsync(CompanyParameters companyParameters, bool trackChanges)
         {
             var companies = await FindAll(trackChanges)
-            .Search(companyParameters.SearchTerm)
-            .OrderBy(c => c.Name)
+             .Search(companyParameters.SearchTerm)
+             .Sort(companyParameters.OrderBy)
             .ToListAsync();
             return PagedList<Company>
             .ToPagedList(companies, companyParameters.PageNumber, companyParameters.PageSize);

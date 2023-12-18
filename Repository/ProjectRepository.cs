@@ -25,7 +25,7 @@ namespace Repository
         {
             var projects = await FindByCondition(e => e.CompanyId.Equals(companyId), trackChanges)
             .Search(projectParameters.SearchTerm)
-            .OrderBy(e => e.Name)
+            .Sort(projectParameters.OrderBy)
             .ToListAsync();
             return PagedList<Project>
             .ToPagedList(projects, projectParameters.PageNumber, projectParameters.PageSize);

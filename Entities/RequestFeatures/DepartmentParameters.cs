@@ -8,6 +8,12 @@ namespace Entities.RequestFeatures
 {
     public class DepartmentParameters : RequestParameters
     {
+
+        public DepartmentParameters()
+        {
+            OrderBy = "name";
+        }
+
         public string SearchTerm { get; set; }
 
     }

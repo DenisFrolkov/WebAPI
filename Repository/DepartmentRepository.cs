@@ -19,7 +19,7 @@ namespace Repository
         {
             var departments = await FindByCondition(e => e.EmployeeId.Equals(employeeId), trackChanges)
             .Search(departmentParameters.SearchTerm)
-            .OrderBy(e => e.Name)
+            .Sort(departmentParameters.OrderBy)
             .ToListAsync();
             return PagedList<Department>
             .ToPagedList(departments, departmentParameters.PageNumber, departmentParameters.PageSize);

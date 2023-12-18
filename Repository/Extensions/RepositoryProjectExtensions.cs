@@ -1,9 +1,6 @@
 ﻿using Entities.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Repository.Extensions.Utility.Extensions;
+using System.Linq.Dynamic.Core;
 
 namespace Repository.Extensions
 {
@@ -16,6 +13,17 @@ namespace Repository.Extensions
                 return projects;
             var lowerCaseTerm = searchTerm.Trim().ToLower();
             return projects.Where(e => e.Name.ToLower().Contains(lowerCaseTerm));
+        }
+        public static IQueryable<Project> Sort(this IQueryable<Project> projects, string orderByQueryString)
+        {
+            if (string.IsNullOrWhiteSpace(orderByQueryString))
+                return projects.OrderBy(e => e.Name);
+
+            var orderQuery = OrderQueryBuilder.CreateOrderQuery<Project>(orderByQueryString);
+
+            if (string.IsNullOrWhiteSpace(orderQuery))
+                return projects.OrderBy(e => e.Name);
+            return projects.OrderBy(orderQuery);
         }
     }
 }

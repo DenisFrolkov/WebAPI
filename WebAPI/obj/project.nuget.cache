@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "Ffjqy4anuzXsxY8GfBebrfWdithY8mVe6CAbH7TwA75ybrBAnPwFLiZPFGC02NAtPISckh0Sdso/qC2BonH7Pw==",
+  "dgSpecHash": "FKwMdudxcT5t9oY/OtoXb4UkSpU+QOpllCssf961lTiNLO4Dbc3jKR1s4K4kMJnr7ZSNhdU9qvZ63/8EPispBA==",
   "success": true,
   "projectFilePath": "C:\\Users\\denis\\Source\\Repos\\DenisFrolkov\\WebAPI\\WebAPI\\WebAPI.csproj",
   "expectedPackageFiles": [
@@ -61,6 +61,7 @@
     "C:\\Users\\denis\\.nuget\\packages\\system.drawing.common\\6.0.0\\system.drawing.common.6.0.0.nupkg.sha512",
     "C:\\Users\\denis\\.nuget\\packages\\system.formats.asn1\\5.0.0\\system.formats.asn1.5.0.0.nupkg.sha512",
     "C:\\Users\\denis\\.nuget\\packages\\system.identitymodel.tokens.jwt\\6.24.0\\system.identitymodel.tokens.jwt.6.24.0.nupkg.sha512",
+    "C:\\Users\\denis\\.nuget\\packages\\system.linq.dynamic.core\\1.3.7\\system.linq.dynamic.core.1.3.7.nupkg.sha512",
     "C:\\Users\\denis\\.nuget\\packages\\system.memory\\4.5.4\\system.memory.4.5.4.nupkg.sha512",
     "C:\\Users\\denis\\.nuget\\packages\\system.memory.data\\1.0.2\\system.memory.data.1.0.2.nupkg.sha512",
     "C:\\Users\\denis\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
