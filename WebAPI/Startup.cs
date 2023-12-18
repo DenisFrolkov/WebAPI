@@ -5,6 +5,8 @@ using WebAPI.Extensions;
 using Contracts;
 using Microsoft.AspNetCore.Mvc;
 using WebAPI.ActionFilters;
+using Entities.DataTransferObjects;
+using Repository.DataShaping;
 
 namespace WebAPI;
 
@@ -45,6 +47,10 @@ public class Startup
         services.AddScoped<ValidateEmployeeForCompanyExistsAttribute>();
         services.AddScoped<ValidateDepartmentForEmployeeExistsAttribute>();
         services.AddScoped<ValidateProjectForCompanyExistsAttribute>();
+        services.AddScoped<IDataShaper<CompanyDto>, DataShaper<CompanyDto>>();
+        services.AddScoped<IDataShaper<EmployeeDto>, DataShaper<EmployeeDto>>();
+        services.AddScoped<IDataShaper<DepartmentDto>, DataShaper<DepartmentDto>>();
+        services.AddScoped<IDataShaper<ProjectDto>, DataShaper<ProjectDto>>();
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

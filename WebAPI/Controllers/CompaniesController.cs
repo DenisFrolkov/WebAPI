@@ -24,12 +24,13 @@ namespace WebAPI.Controllers
             private readonly IRepositoryManager _repository;
             private readonly ILoggerManager _logger;
             private readonly IMapper _mapper;
-            public CompanyController(IRepositoryManager repository, ILoggerManager
-           logger, IMapper mapper)
+            private readonly IDataShaper<CompanyDto> _dataShaper;
+            public CompanyController(IRepositoryManager repository, ILoggerManager logger, IMapper mapper, IDataShaper<CompanyDto> dataShaper)
             {
                 _repository = repository;
                 _logger = logger;
                 _mapper = mapper;
+                _dataShaper = dataShaper;
             }
 
             [HttpGet]
@@ -38,7 +39,7 @@ namespace WebAPI.Controllers
                 var companiesFromDb = await _repository.Company.GetAllCompaniesAsync(companyParameters, trackChanges: false);
                 Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(companiesFromDb.MetaData));
                 var companiesDto = _mapper.Map<IEnumerable<CompanyDto>>(companiesFromDb);
-                return Ok(companiesDto);
+                return Ok(_dataShaper.ShapeData(companiesDto, companyParameters.Fields));
             }
 
             [HttpGet("{id}", Name = "CompanyById")]

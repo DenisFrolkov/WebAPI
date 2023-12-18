@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using Repository.DataShaping;
 using WebAPI.ActionFilters;
 
 namespace WebAPI.Controllers
@@ -18,12 +19,14 @@ namespace WebAPI.Controllers
         private readonly IRepositoryManager _repository;
         private readonly ILoggerManager _logger;
         private readonly IMapper _mapper;
-        public DepartmentController(IRepositoryManager repository, ILoggerManager logger, IMapper mapper)
+        private readonly IDataShaper<DepartmentDto> _dataShaper;
+        public DepartmentController(IRepositoryManager repository, ILoggerManager logger, IMapper mapper, IDataShaper<DepartmentDto> dataShaper)
         {
             _repository = repository;
             _logger = logger;
             _mapper = mapper;
-         }
+            _dataShaper = dataShaper;
+        }
         [HttpGet]
         public async Task<IActionResult> GetDepartmentsForEmployee(Guid employeeId, [FromQuery] DepartmentParameters departmentParameters)
         {
@@ -36,7 +39,7 @@ namespace WebAPI.Controllers
             var departmentsFromDb = await _repository.Department.GetDepartmentsAsync(employeeId, departmentParameters, trackChanges: false);
             Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(departmentsFromDb.MetaData));
             var departmentDto = _mapper.Map<IEnumerable<DepartmentDto>>(departmentsFromDb);
-            return Ok(departmentDto);
+            return Ok(_dataShaper.ShapeData(departmentDto, departmentParameters.Fields));
         }
 
         [HttpGet("{id}", Name = "GetDepartmentForEmployee")]

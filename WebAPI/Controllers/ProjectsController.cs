@@ -18,11 +18,14 @@ namespace WebAPI.Controllers
         private readonly IRepositoryManager _repository;
         private readonly ILoggerManager _logger;
         private readonly IMapper _mapper;
-        public ProjectsController(IRepositoryManager repository, ILoggerManager logger, IMapper mapper)
+        private readonly IDataShaper<ProjectDto> _dataShaper;
+
+        public ProjectsController(IRepositoryManager repository, ILoggerManager logger, IMapper mapper, IDataShaper<ProjectDto> dataShaper)
         {
             _repository = repository;
             _logger = logger;
             _mapper = mapper;
+            _dataShaper = dataShaper;
         }
         [HttpGet]
         public async Task<IActionResult> GetProjectsForCompany(Guid companyId, [FromQuery] ProjectParameters projectParameters)
@@ -36,7 +39,7 @@ namespace WebAPI.Controllers
             var projectsFromDb = await _repository.Project.GetProjectsAsync(companyId, projectParameters, trackChanges: false);
             Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(projectsFromDb.MetaData));
             var projectsDto = _mapper.Map<IEnumerable<ProjectDto>>(projectsFromDb);
-            return Ok(projectsDto);
+            return Ok(_dataShaper.ShapeData(projectsDto, projectParameters.Fields));
         }
 
         [HttpGet("{id}", Name = "GetProjectForCompany")]
