@@ -3,6 +3,7 @@ using Contracts;
 using Entities.DataTransferObjects;
 using Entities.Models;
 using Entities.RequestFeatures;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
@@ -28,7 +29,8 @@ namespace WebAPI.Controllers
             _dataShaper = dataShaper;
         }
 
-        [HttpGet]
+        [HttpGet(Name = "GetEmployeesForCompany"), Authorize(Roles = "Manager")]
+        [HttpHead]
         public async Task<IActionResult> GetEmployeesForCompany(Guid companyId, [FromQuery] EmployeeParameters employeeParameters)
         {
             if (!employeeParameters.ValidAgeRange)
@@ -142,6 +144,13 @@ namespace WebAPI.Controllers
             _mapper.Map(employee, employeeEntity);
             await _repository.SaveAsync();
             return NoContent();
+        }
+
+        [HttpOptions]
+        public IActionResult GetEmployeesOptions()
+        {
+            Response.Headers.Add("Allow", "GET, OPTIONS, POST");
+            return Ok();
         }
     }
 }

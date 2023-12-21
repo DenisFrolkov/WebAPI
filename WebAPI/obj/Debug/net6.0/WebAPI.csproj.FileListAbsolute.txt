@@ -413,3 +413,11 @@ C:\Users\denis\Source\Repos\DenisFrolkov\WebAPI\WebAPI\bin\Debug\net6.0\Microsof
 C:\Users\denis\Source\Repos\DenisFrolkov\WebAPI\WebAPI\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
 C:\Users\denis\Source\Repos\DenisFrolkov\WebAPI\WebAPI\obj\Debug\net6.0\WebAPI.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\denis\Source\Repos\DenisFrolkov\WebAPI\WebAPI\bin\Debug\net6.0\System.Linq.Dynamic.Core.dll
+C:\Users\denis\Source\Repos\DenisFrolkov\WebAPI\WebAPI\obj\Debug\net6.0\WebAPI.sourcelink.json
+C:\Users\denis\Source\Repos\DenisFrolkov\WebAPI\WebAPI\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.Versioning.dll
+C:\Users\denis\Source\Repos\DenisFrolkov\WebAPI\WebAPI\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\denis\Source\Repos\DenisFrolkov\WebAPI\WebAPI\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\denis\source\repos\DenisFrolkov\WebAPI\WebAPI\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\denis\source\repos\DenisFrolkov\WebAPI\WebAPI\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\denis\source\repos\DenisFrolkov\WebAPI\WebAPI\bin\Debug\net6.0\Microsoft.Extensions.Identity.Core.dll
+C:\Users\denis\source\repos\DenisFrolkov\WebAPI\WebAPI\bin\Debug\net6.0\Microsoft.Extensions.Identity.Stores.dll

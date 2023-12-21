@@ -3,6 +3,7 @@ using Contracts;
 using Entities.DataTransferObjects;
 using Entities.Models;
 using Entities.RequestFeatures;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
@@ -27,7 +28,8 @@ namespace WebAPI.Controllers
             _mapper = mapper;
             _dataShaper = dataShaper;
         }
-        [HttpGet]
+        [HttpGet(Name = "GetDepartmentsForEmployee"), Authorize(Roles = "Manager")]
+        [HttpHead]
         public async Task<IActionResult> GetDepartmentsForEmployee(Guid employeeId, [FromQuery] DepartmentParameters departmentParameters)
         {
             var employee = await _repository.Employee.GetEmployeesAsync(employeeId, trackChanges: false);
@@ -120,6 +122,13 @@ namespace WebAPI.Controllers
             _mapper.Map(departmentToPatch, departmentEntity);
             await _repository.SaveAsync();
             return NoContent();
+        }
+
+        [HttpOptions]
+        public IActionResult GetDepartmentsOptions()
+        {
+            Response.Headers.Add("Allow", "GET, OPTIONS, POST");
+            return Ok();
         }
     }
 }

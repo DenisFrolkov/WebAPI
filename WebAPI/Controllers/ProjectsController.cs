@@ -3,6 +3,7 @@ using Contracts;
 using Entities.DataTransferObjects;
 using Entities.Models;
 using Entities.RequestFeatures;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
@@ -27,7 +28,8 @@ namespace WebAPI.Controllers
             _mapper = mapper;
             _dataShaper = dataShaper;
         }
-        [HttpGet]
+        [HttpGet(Name = "GetProjectsForCompany"), Authorize(Roles = "Manager")]
+        [HttpHead]
         public async Task<IActionResult> GetProjectsForCompany(Guid companyId, [FromQuery] ProjectParameters projectParameters)
         {
             var company = await _repository.Company.GetCompanyAsync(companyId, trackChanges: false);
@@ -118,6 +120,13 @@ namespace WebAPI.Controllers
             _mapper.Map(projectToPatch, projectEntity);
             await _repository.SaveAsync();
             return NoContent();
+        }
+
+        [HttpOptions]
+        public IActionResult GetProjectsOptions()
+        {
+            Response.Headers.Add("Allow", "GET, OPTIONS, POST");
+            return Ok();
         }
     }
 }

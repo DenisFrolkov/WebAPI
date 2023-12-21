@@ -66,3 +66,4 @@ C:\Users\denis\Desktop\WebAPI\Repository\obj\Debug\net6.0\Repository.dll
 C:\Users\denis\Desktop\WebAPI\Repository\obj\Debug\net6.0\refint\Repository.dll
 C:\Users\denis\Desktop\WebAPI\Repository\obj\Debug\net6.0\Repository.pdb
 C:\Users\denis\Desktop\WebAPI\Repository\obj\Debug\net6.0\ref\Repository.dll
+C:\Users\denis\Source\Repos\DenisFrolkov\WebAPI\Repository\obj\Debug\net6.0\Repository.sourcelink.json

@@ -1,12 +1,12 @@
-using Microsoft.AspNetCore.HttpOverrides;
-using NLog;
-using AutoMapper;
-using WebAPI.Extensions;
 using Contracts;
-using Microsoft.AspNetCore.Mvc;
-using WebAPI.ActionFilters;
 using Entities.DataTransferObjects;
+using Microsoft.AspNetCore.HttpOverrides;
+using Microsoft.AspNetCore.Mvc;
+using NLog;
+using Repository;
 using Repository.DataShaping;
+using WebAPI.Extensions;
+using WebAPI.ActionFilters;
 
 namespace WebAPI;
 
@@ -21,7 +21,6 @@ public class Startup
 
     public IConfiguration Configuration { get; }
 
-    // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services)
     {
         services.ConfigureCors();
@@ -51,6 +50,11 @@ public class Startup
         services.AddScoped<IDataShaper<EmployeeDto>, DataShaper<EmployeeDto>>();
         services.AddScoped<IDataShaper<DepartmentDto>, DataShaper<DepartmentDto>>();
         services.AddScoped<IDataShaper<ProjectDto>, DataShaper<ProjectDto>>();
+        services.ConfigureVersioning();
+        services.AddAuthentication();
+        services.ConfigureIdentity();
+        services.ConfigureJWT(Configuration);
+        services.AddScoped<IAuthenticationManager, AuthenticationManager>();
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -74,6 +78,7 @@ public class Startup
                 ForwardedHeaders = ForwardedHeaders.All
             });
             app.UseRouting();
+            app.UseAuthentication();
             app.UseAuthorization();
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }

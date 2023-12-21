@@ -30,6 +30,8 @@ namespace WebAPI.Mapping
             CreateMap<DepartmentForUpdateDto, Department>();
             CreateMap<DepartmentForUpdateDto, Department>().ReverseMap();
 
+            CreateMap<UserForRegistrationDto, User>();
+
         }
     }
 }

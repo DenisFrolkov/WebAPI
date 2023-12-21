@@ -4,6 +4,7 @@ using Entities;
 using Entities.DataTransferObjects;
 using Entities.Models;
 using Entities.RequestFeatures;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
@@ -33,7 +34,8 @@ namespace WebAPI.Controllers
                 _dataShaper = dataShaper;
             }
 
-            [HttpGet]
+            [HttpGet(Name = "GetCompanies"), Authorize(Roles = "Manager")]
+            [HttpHead]
             public async Task<IActionResult> GetCompanies([FromQuery] CompanyParameters companyParameters)
             {
                 var companiesFromDb = await _repository.Company.GetAllCompaniesAsync(companyParameters, trackChanges: false);
@@ -164,6 +166,13 @@ namespace WebAPI.Controllers
                 _mapper.Map(companyToPatch, companyEntity);
                 await _repository.SaveAsync();
                 return NoContent();
+            }
+
+            [HttpOptions]
+            public IActionResult GetCompaniesOptions()
+            {
+                Response.Headers.Add("Allow", "GET, OPTIONS, POST");
+                return Ok();
             }
         }
     }
