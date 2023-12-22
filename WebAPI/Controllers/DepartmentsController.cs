@@ -15,6 +15,7 @@ namespace WebAPI.Controllers
 {
     [Route("api/employees/{employeeId}/departments")]
     [ApiController]
+    [ApiExplorerSettings(GroupName = "v1")]
     public class DepartmentController : ControllerBase
     {
         private readonly IRepositoryManager _repository;
@@ -28,6 +29,13 @@ namespace WebAPI.Controllers
             _mapper = mapper;
             _dataShaper = dataShaper;
         }
+
+        /// <summary>
+        /// Получает определый отдел для определенного сотрудника
+        /// </summary>
+        /// <param name="employeeId">Id сотрудника</param>
+        /// <param name="id">Id отедла который хотим получить</param>
+        /// <returns></returns>
         [HttpGet(Name = "GetDepartmentsForEmployee"), Authorize(Roles = "Manager")]
         [HttpHead]
         public async Task<IActionResult> GetDepartmentsForEmployee(Guid employeeId, [FromQuery] DepartmentParameters departmentParameters)
@@ -44,6 +52,12 @@ namespace WebAPI.Controllers
             return Ok(_dataShaper.ShapeData(departmentDto, departmentParameters.Fields));
         }
 
+        /// <summary>
+        /// Получает определый отдел для определенного сотрудника
+        /// </summary>
+        /// <param name="employeeId">Id сотрудника</param>
+        /// <param name="id">Id отедла который хотим получить</param>
+        /// <returns></returns>
         [HttpGet("{id}", Name = "GetDepartmentForEmployee")]
         public async Task<IActionResult> GetDepartmentForEmployee(Guid employeeId, Guid id)
         {
@@ -51,7 +65,7 @@ namespace WebAPI.Controllers
             if (employee == null)
             {
                 _logger.LogInfo($"Company with id: {employeeId} doesn't exist in the database.");
-            return NotFound();
+                return NotFound();
             }
             var departmentDb = await _repository.Department.GetDepartmentAsync(employeeId, id,
            trackChanges:
@@ -59,12 +73,18 @@ namespace WebAPI.Controllers
             if (departmentDb == null)
             {
                 _logger.LogInfo($"Employee with id: {id} doesn't exist in the database.");
-            return NotFound();
+                return NotFound();
             }
             var department = _mapper.Map<DepartmentDto>(departmentDb);
             return Ok(department);
         }
 
+        /// <summary>
+        /// Созает сотрудника для определенной компании
+        /// </summary>
+        /// <param name="department">Id сотрудника</param>
+        /// <param name="department">Экземпляр нового отдела</param>
+        /// <returns></returns>
         [HttpPost]
         [ServiceFilter(typeof(ValidationFilterAttribute))]
         public async Task<IActionResult> CreateDepartmentForEmployee(Guid employeeId, [FromBody] DepartmentForCreationDto department)
@@ -85,6 +105,13 @@ namespace WebAPI.Controllers
                 id = departmentToReturn.Id
             }, departmentToReturn);
         }
+
+        /// <summary>
+        /// Удаляет отдел для определенного сотрудника
+        /// </summary>
+        /// <param name="employeeId">Id сотрудника</param>
+        /// <param name="id">Id отедал который хотим удалить</param>
+        /// <returns></returns>
         [HttpDelete("{id}")]
         [ServiceFilter(typeof(ValidateDepartmentForEmployeeExistsAttribute))]
         public async Task<IActionResult> DeleteDepartmentForEmployee(Guid employeeId, Guid id)
@@ -95,6 +122,13 @@ namespace WebAPI.Controllers
             return NoContent();
         }
 
+        /// <summary>
+        /// Редактирует отедл для определенного сотрудника
+        /// </summary>
+        /// <param name="employeeId">Id сотрудника</param>
+        /// <param name="id">Id отдела который редактируем</param>
+        /// <param name="department">Экземпляр редактированного отдела</param>
+        /// <returns></returns>
         [HttpPut("{id}")]
         [ServiceFilter(typeof(ValidationFilterAttribute))]
         [ServiceFilter(typeof(ValidateDepartmentForEmployeeExistsAttribute))]
@@ -106,6 +140,13 @@ namespace WebAPI.Controllers
             return NoContent();
         }
 
+        /// <summary>
+        /// Редактирует отдел для определенного сотрудника
+        /// </summary>
+        /// <param name="employeeId">Id сотрудника</param>
+        /// <param name="id">Id отдела который редактируем</param>
+        /// <param name="patchDoc">Параметры для patch запроса</param>
+        /// <returns></returns>
         [HttpPatch("{id}")]
         [ServiceFilter(typeof(ValidateDepartmentForEmployeeExistsAttribute))]
         public async Task<IActionResult> PartiallyUpdateDepartmentForEmployee(Guid employeeId, Guid id, [FromBody] JsonPatchDocument<DepartmentForUpdateDto> patchDoc)

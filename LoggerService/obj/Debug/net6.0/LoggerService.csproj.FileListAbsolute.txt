@@ -67,3 +67,4 @@ C:\Users\denis\Desktop\WebAPI\LoggerService\obj\Debug\net6.0\refint\LoggerServic
 C:\Users\denis\Desktop\WebAPI\LoggerService\obj\Debug\net6.0\LoggerService.pdb
 C:\Users\denis\Desktop\WebAPI\LoggerService\obj\Debug\net6.0\ref\LoggerService.dll
 C:\Users\denis\Source\Repos\DenisFrolkov\WebAPI\LoggerService\obj\Debug\net6.0\LoggerService.sourcelink.json
+C:\Users\denis\Desktop\WebAPI\LoggerService\obj\Debug\net6.0\LoggerService.sourcelink.json

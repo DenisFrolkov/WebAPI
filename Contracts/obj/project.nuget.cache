@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "vZfve2VplhKdK45UhnaNo7jpTmuSfqdA/iy9/O6thNVjSV1AjBu9o8gh/3gaS/BEgQdci/Tel9WCpgB96iIEbw==",
+  "dgSpecHash": "G4eiRe1bOPEViBzkUs/7ychsHe/mWauufdTQXvSUIfQ49uRYFz1IWlqwlDqV2eOnEFBJqPQK2bmugB2VLcV5sQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\denis\\source\\repos\\DenisFrolkov\\WebAPI\\Contracts\\Contracts.csproj",
+  "projectFilePath": "C:\\Users\\denis\\Desktop\\WebAPI\\Contracts\\Contracts.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\denis\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\6.0.25\\microsoft.aspnetcore.cryptography.internal.6.0.25.nupkg.sha512",
     "C:\\Users\\denis\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\6.0.25\\microsoft.aspnetcore.cryptography.keyderivation.6.0.25.nupkg.sha512",

@@ -6,6 +6,7 @@ namespace WebAPI.Controllers
 {
     [Route("api/employees/{employeeId}/departments")]
     [ApiController]
+    [ApiExplorerSettings(GroupName = "v2")]
     public class DepartmentsV2Controller : ControllerBase
     {
         private readonly IRepositoryManager _repository;

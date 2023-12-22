@@ -14,6 +14,7 @@ namespace WebAPI.Controllers
 {
     [Route("api/companies/{companyId}/projects")]
     [ApiController]
+    [ApiExplorerSettings(GroupName = "v1")]
     public class ProjectsController : ControllerBase
     {
         private readonly IRepositoryManager _repository;
@@ -28,6 +29,13 @@ namespace WebAPI.Controllers
             _mapper = mapper;
             _dataShaper = dataShaper;
         }
+
+        /// <summary>
+        /// Получает список всех проектов для определенной компании
+        /// </summary>
+        /// <param name="companyId">Id компании</param>
+        /// <param name="projectParameters">Параметры для частичных результатов запроса</param>
+        /// <returns></returns>
         [HttpGet(Name = "GetProjectsForCompany"), Authorize(Roles = "Manager")]
         [HttpHead]
         public async Task<IActionResult> GetProjectsForCompany(Guid companyId, [FromQuery] ProjectParameters projectParameters)
@@ -44,6 +52,12 @@ namespace WebAPI.Controllers
             return Ok(_dataShaper.ShapeData(projectsDto, projectParameters.Fields));
         }
 
+        /// <summary>
+        /// Получает определенный проект для определенной компании
+        /// </summary>
+        /// <param name="companyId">Id компании</param>
+        /// <param name="id">Id проекта который хотим получить</param>
+        /// <returns></returns>
         [HttpGet("{id}", Name = "GetProjectForCompany")]
         public async Task<IActionResult> GetProjectForCompany(Guid companyId, Guid id)
         {
@@ -63,6 +77,12 @@ namespace WebAPI.Controllers
             return Ok(project);
         }
 
+        /// <summary>
+        /// Созает проект для определенной компании
+        /// </summary>
+        /// <param name="companyId">Id компании</param>
+        /// <param name="employee">Экземпляр нового проекта</param>
+        /// <returns></returns>
         [HttpPost]
         [ServiceFilter(typeof(ValidationFilterAttribute))]
         public async Task<IActionResult> CreateProjectForCompany(Guid companyId, [FromBody] ProjectForCreationDto project)
@@ -84,6 +104,12 @@ namespace WebAPI.Controllers
             }, projectToReturn);
         }
 
+        /// <summary>
+        /// Удаляет проект определенной компании
+        /// </summary>
+        /// <param name="companyId">Id компании</param>
+        /// <param name="id">Id проекта который хотим удалить</param>
+        /// <returns></returns>
         [HttpDelete("{id}")]
         [ServiceFilter(typeof(ValidateProjectForCompanyExistsAttribute))]
         public async Task<IActionResult> DeleteProjectForCompany(Guid companyId, Guid id)
@@ -94,6 +120,13 @@ namespace WebAPI.Controllers
             return NoContent();
         }
 
+        /// <summary>
+        /// Редактирует проект для определенной компании
+        /// </summary>
+        /// <param name="companyId">Id компании</param>
+        /// <param name="id">Id проекта который редактируем</param>
+        /// <param name="employee">Экземпляр редактированного проекта</param>
+        /// <returns></returns>
         [HttpPut("{id}")]
         [ServiceFilter(typeof(ValidationFilterAttribute))]
         [ServiceFilter(typeof(ValidateEmployeeForCompanyExistsAttribute))]
@@ -104,6 +137,14 @@ namespace WebAPI.Controllers
             await _repository.SaveAsync();
             return NoContent();
         }
+
+        /// <summary>
+        /// Редактирует проект для определенной компании
+        /// </summary>
+        /// <param name="companyId">Id компании</param>
+        /// <param name="id">Id проекта который редактируем</param>
+        /// <param name="patchDoc">Параметры для patch запроса</param>
+        /// <returns></returns>
         [HttpPatch("{id}")]
         [ServiceFilter(typeof(ValidateEmployeeForCompanyExistsAttribute))]
         public async Task<IActionResult> PartiallyUpdateProjectForCompany(Guid companyId, Guid id, [FromBody] JsonPatchDocument<ProjectForUpdateDto> patchDoc)

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "qRspA5P2xDnJItddhYIUN5H2OAKLNBMsNoZ9TR90vtVd/rD6EI5brgoSEqMa65PUoF2n+KSV2OkfBbebYIkWzQ==",
+  "dgSpecHash": "WABV51gad8gDNWeriNj7EsoeG32bDLvqddduGW/GxgOCnQ+hkLLd0TNw3d9GyT6hkKFRfvNn38HCwaZ+5Pnuow==",
   "success": true,
-  "projectFilePath": "C:\\Users\\denis\\source\\repos\\DenisFrolkov\\WebAPI\\LoggerService\\LoggerService.csproj",
+  "projectFilePath": "C:\\Users\\denis\\Desktop\\WebAPI\\LoggerService\\LoggerService.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\denis\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\6.0.25\\microsoft.aspnetcore.cryptography.internal.6.0.25.nupkg.sha512",
     "C:\\Users\\denis\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\6.0.25\\microsoft.aspnetcore.cryptography.keyderivation.6.0.25.nupkg.sha512",

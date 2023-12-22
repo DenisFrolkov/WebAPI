@@ -6,6 +6,7 @@ namespace WebAPI.Controllers
 {
     [Route("api/companies/{companyId}/projects")]
     [ApiController]
+    [ApiExplorerSettings(GroupName = "v2")]
     public class ProjectsV2Controller : ControllerBase
     {
         private readonly IRepositoryManager _repository;

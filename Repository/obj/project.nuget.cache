@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "4+vaShXAWRPhtBjS6Q3sxUkY62p3DZqXx+TW4daNudEkNU1TBUAoAlLDtvyhSAiIUcefWAeGc9koETrQ1L+s0Q==",
+  "dgSpecHash": "X13RR4ISdroCLNb+NQ7+UIw3Itxo4iiTS5xVnAwchlwMyREwr/6uBlm6+0DoqF/eRHQaXgPXGzE6D9owZ8thBw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\denis\\source\\repos\\DenisFrolkov\\WebAPI\\Repository\\Repository.csproj",
+  "projectFilePath": "C:\\Users\\denis\\Desktop\\WebAPI\\Repository\\Repository.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\denis\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\6.0.25\\microsoft.aspnetcore.cryptography.internal.6.0.25.nupkg.sha512",
     "C:\\Users\\denis\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\6.0.25\\microsoft.aspnetcore.cryptography.keyderivation.6.0.25.nupkg.sha512",
