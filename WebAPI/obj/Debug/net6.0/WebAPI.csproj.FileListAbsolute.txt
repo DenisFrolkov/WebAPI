@@ -430,3 +430,5 @@ C:\Users\denis\Desktop\WebAPI\WebAPI\bin\Debug\net6.0\Microsoft.Extensions.Ident
 C:\Users\denis\Desktop\WebAPI\WebAPI\bin\Debug\net6.0\Microsoft.Extensions.Identity.Stores.dll
 C:\Users\denis\Desktop\WebAPI\WebAPI\bin\Debug\net6.0\System.Linq.Dynamic.Core.dll
 C:\Users\denis\Desktop\WebAPI\WebAPI\obj\Debug\net6.0\WebAPI.sourcelink.json
+C:\Users\denis\Desktop\WebAPI\WebAPI\bin\Debug\net6.0\WebAPI.xml
+C:\Users\denis\Desktop\WebAPI\WebAPI\obj\Debug\net6.0\WebAPI.xml
